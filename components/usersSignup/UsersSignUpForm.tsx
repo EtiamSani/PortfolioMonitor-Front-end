@@ -5,11 +5,13 @@ import { ReloadIcon } from "@radix-ui/react-icons"
   import { Label } from "@/components/ui/label"
   import { Button } from '../ui/button'
 import Link from 'next/link'
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 
 
 
 const UsersLoginForm = ({ className, ...props }:any) => {
     const [isLoading, setIsLoading] = useState<boolean>(false)
+    const [showPassword, setShowPassword] = useState<boolean>(false);
 
   async function onSubmit(event: React.SyntheticEvent) {
     event.preventDefault()
@@ -40,47 +42,48 @@ const UsersLoginForm = ({ className, ...props }:any) => {
             <div className="grid gap-5">
             <h2 className='font-bold text-3xl m-auto'>Créer mon compte</h2>
               <div className="grid gap-1">
-                <Label className="" htmlFor="email">
-                  Pseudo
-                </Label>
-                <Input
-                  id="email"
-                  placeholder="name@example.com"
-                  type="email"
-                  autoCapitalize="none"
-                  autoComplete="email"
-                  autoCorrect="off"
-                  disabled={isLoading}
-                />
-              </div>
-              <div className="grid gap-1">
-                <Label className="" htmlFor="email">
-                  Email
-                </Label>
-                <Input
-                  id="email"
-                  placeholder="name@example.com"
-                  type="email"
-                  autoCapitalize="none"
-                  autoComplete="email"
-                  autoCorrect="off"
-                  disabled={isLoading}
-                />
-              </div>
-              <div className="grid gap-1">
-                <Label className="" htmlFor="email">
-                  Mot de passe
-                </Label>
-                <Input
-                  id="email"
-                  placeholder="name@example.com"
-                  type="email"
-                  autoCapitalize="none"
-                  autoComplete="email"
-                  autoCorrect="off"
-                  disabled={isLoading}
-                />
-              </div>
+              <Label htmlFor="pseudo">Pseudo</Label>
+              <Input
+                id="pseudo"
+                placeholder="Entrez votre pseudo"
+                type="text"
+                autoCapitalize="none"
+                autoComplete="off"
+                autoCorrect="off"
+                disabled={isLoading}
+              />
+            </div>
+            <div className="grid gap-1">
+              <Label htmlFor="email">Email</Label>
+              <Input
+                id="email"
+                placeholder="name@example.com"
+                type="email"
+                autoCapitalize="none"
+                autoComplete="email"
+                autoCorrect="off"
+                disabled={isLoading}
+              />
+            </div>
+            <div className="relative grid gap-1">
+              <Label htmlFor="password">Mot de passe</Label>
+              <Input
+                id="password"
+                placeholder="Entrez votre mot de passe"
+                type={showPassword ? 'text' : 'password'}
+                autoCapitalize="none"
+                autoComplete="new-password"
+                autoCorrect="off"
+                disabled={isLoading}
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute inset-y-0 right-0 flex items-center pr-3 focus:outline-none"
+              >
+                {showPassword ? <AiOutlineEyeInvisible className="h-5 w-5 mt-5 text-black" /> : <AiOutlineEye className="h-5 w-5 text-black mt-5" />}
+              </button>
+            </div>
               <Button disabled={isLoading}>
                 {isLoading && (
                   <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
