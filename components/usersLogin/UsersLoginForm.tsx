@@ -32,11 +32,12 @@ const UsersLoginForm = ({ className, ...props }:any) => {
             </div>
 
         <div className="grid gap-6 lg:w-[500px]">
+            <h2 className='font-bold text-xl'>Créer mon compte</h2>
           <form onSubmit={onSubmit}>
             <div className="grid gap-2">
               <div className="grid gap-1">
                 <Label className="" htmlFor="email">
-                  Email
+                  Pseudo
                 </Label>
                 <Input
                   id="email"
@@ -64,7 +65,7 @@ const UsersLoginForm = ({ className, ...props }:any) => {
               </div>
               <div className="grid gap-1">
                 <Label className="" htmlFor="email">
-                  Email
+                  Mot de passe
                 </Label>
                 <Input
                   id="email"
@@ -80,20 +81,10 @@ const UsersLoginForm = ({ className, ...props }:any) => {
                 {isLoading && (
                   <p>icon</p>
                 )}
-                Sign In with Email
+                Créer mon compte
               </Button>
             </div>
           </form>
-          <div className="relative">
-            <div className="absolute inset-0 flex items-center">
-              <span className="w-full border-t" />
-            </div>
-            <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-background px-2 text-muted-foreground">
-                Or continue with
-              </span>
-            </div>
-          </div>
         </div>
         </div>
       )
