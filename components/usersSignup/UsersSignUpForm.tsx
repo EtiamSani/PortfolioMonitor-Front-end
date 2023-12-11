@@ -4,6 +4,7 @@ import { ReloadIcon } from "@radix-ui/react-icons"
   import { Input } from "@/components/ui/input"
   import { Label } from "@/components/ui/label"
   import { Button } from '../ui/button'
+import Link from 'next/link'
 
 
 
@@ -88,6 +89,7 @@ const UsersLoginForm = ({ className, ...props }:any) => {
               </Button>
             </div>
           </form>
+          <Link href="/mot-de-passe-oublie" className="text-blue-500 underline m-auto text-sm">Mot de passe oublié ?</Link>
         </div>
         </div>
       )
