@@ -2,10 +2,11 @@ import React from 'react';
 import { Card } from '../ui/card';
 import { Button } from '@/components/ui/button';
 
-const PriceCard = ({ title, description, price, items, temporality, itemsNotInTheOffer, cardBorderClassName }:any) => {
+const PriceCard = ({ title, description, price, items, temporality, itemsNotInTheOffer, cardBorderClassName, buttonTexts }:any) => {
     return (
+        
         <div className={cardBorderClassName}>
-        <Card className="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border">
+        <Card className="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border ">
             <h3 className="mb-4 text-2xl font-semibold">{title}</h3>
             <p className="font-light text-gray-500 sm:text-lg dark:text-gray-400">{description}</p>
             <div className="flex justify-center items-baseline my-8">
@@ -29,9 +30,10 @@ const PriceCard = ({ title, description, price, items, temporality, itemsNotInTh
                     </li>
                 ))}
             </ul>
-            <Button>Accéder au portefeuilles</Button>
+            <Button >{buttonTexts}</Button>
         </Card>
         </div>
+        
     );
 };
 
