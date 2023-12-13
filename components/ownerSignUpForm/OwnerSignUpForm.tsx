@@ -136,7 +136,7 @@ const OwnerSignUpForm = () => {
                             </Button>
                         ))}
                     </div>
-                    <Button className='mx-2' onClick={handleSecondFormSubmit} disabled={isLoading}>
+                    <Button className='mx-2' onClick={handleSecondFormSubmit} disabled={isLoading || selectedButton === 0}>
                         {isLoading && (
                             <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
                         )}
@@ -174,7 +174,7 @@ const OwnerSignUpForm = () => {
                         {isLoading && (
                             <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
                         )}
-                        Accèder mes portefeuilles
+                        Accèder à mes portefeuilles
                         <LuLogIn className='ml-2 text-xl'/>
                     </Button>
                     <Link href="/" className="text-blue-500 underline m-auto text-sm">Retour au formulaire précédent</Link>
