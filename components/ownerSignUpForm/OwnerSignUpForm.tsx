@@ -1,11 +1,13 @@
 "use client"
 import React, { useState } from 'react'
 import { ReloadIcon } from "@radix-ui/react-icons"
-  import { Input } from "@/components/ui/input"
-  import { Label } from "@/components/ui/label"
-  import { Button } from '../ui/button'
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Button } from '../ui/button'
 import Link from 'next/link'
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
+import { FaWallet } from "react-icons/fa";
+import { LuLogIn } from "react-icons/lu";
 
 const OwnerSignUpForm = () => {
     const [isLoading, setIsLoading] = useState<boolean>(false)
@@ -156,16 +158,17 @@ const OwnerSignUpForm = () => {
                                         autoCorrect="off"
                                         disabled={isLoading}
                                     />
-                                    <Button type="submit">Créer le portefeuille</Button>
+                                    <Button className='ml-5 bg-gradient-to-r from-blue-500 to-purple-500' type="submit">Créer le portefeuille<FaWallet className='ml-2' /></Button>
                                     </div>
                         </div>
                     ))}
                 </div>
-                <Button onClick={handleSecondFormSubmit} disabled={isLoading}>
+                <Button  onClick={handleSecondFormSubmit} disabled={isLoading}>
                         {isLoading && (
                             <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
                         )}
                         Accèder mes portefeuilles
+                        <LuLogIn className='ml-2 text-xl'/>
                     </Button>
                     <Link href="/" className="text-blue-500 underline m-auto text-sm">Retour au formulaire précédent</Link>
                 </div>
