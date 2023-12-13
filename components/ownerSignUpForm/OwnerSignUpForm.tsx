@@ -8,6 +8,7 @@ import Link from 'next/link'
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { FaWallet } from "react-icons/fa";
 import { LuLogIn } from "react-icons/lu";
+import Image from 'next/image'
 
 const OwnerSignUpForm = () => {
     const [isLoading, setIsLoading] = useState<boolean>(false)
@@ -47,6 +48,12 @@ const OwnerSignUpForm = () => {
             <div className='bg-black w-full hidden lg:block lg:h-screen'>
               <div className="relative h-full w-full bg-black">
                 <div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]">
+                {/* <Image
+                    src="/images/signup-illustration.png" 
+                    alt="Description de l'image"
+                    width={500}
+                    height={500}
+                        /> */}
                   <h1 className='text-white grid justify-items-center text-7xl font-bold text-center mt-10'><span className="bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text">EIP </span> Portfolio</h1>
                 </div>
                 <div className="absolute left-0 right-0 bottom-12 text-center text-white">
@@ -60,8 +67,8 @@ const OwnerSignUpForm = () => {
         <div className="grid gap-6 lg:w-[500px] m-auto">
           <form onSubmit={onSubmit}>
             <div className="grid gap-5">
-            <h2 className='font-bold text-3xl m-auto'>Créer mon compte <span className="bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text">d'investisseur</span></h2>
-              <div className="grid gap-1">
+            <h2 className='font-bold text-3xl ml-2'>Créer mon compte <span className="bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text">d'investisseur</span></h2>
+              <div className="grid gap-1 mx-2">
               <Label htmlFor="pseudo">Pseudo</Label>
               <Input
                 id="pseudo"
@@ -73,7 +80,7 @@ const OwnerSignUpForm = () => {
                 disabled={isLoading}
               />
             </div>
-            <div className="grid gap-1">
+            <div className="grid gap-1 mx-2">
               <Label htmlFor="email">Email</Label>
               <Input
                 id="email"
@@ -85,7 +92,7 @@ const OwnerSignUpForm = () => {
                 disabled={isLoading}
               />
             </div>
-            <div className="relative grid gap-1">
+            <div className="relative grid gap-1 mx-2">
               <Label htmlFor="password">Mot de passe</Label>
               <Input
                 id="password"
@@ -99,12 +106,12 @@ const OwnerSignUpForm = () => {
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute inset-y-0 right-0 flex items-center pr-3 focus:outline-none"
+                className="absolute inset-y-0 right-0 flex items-center pr-3 focus:outline-none "
               >
                 {showPassword ? <AiOutlineEyeInvisible className="h-5 w-5 mt-5 text-black" /> : <AiOutlineEye className="h-5 w-5 text-black mt-5" />}
               </button>
             </div>
-              <Button disabled={isLoading}>
+              <Button className='mx-2'disabled={isLoading}>
                 {isLoading && (
                   <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
                 )}
@@ -117,9 +124,9 @@ const OwnerSignUpForm = () => {
          )}
          {showSecondForm && !showThirdForm && (
              <div className="grid gap-6 lg:w-[500px] m-auto">
-                    <h2 className='font-bold text-3xl m-auto'>Combien de portefeuille souhaitez-vous créer ? </h2>
+                    <h2 className='font-bold text-3xl ml-2'>Combien de <span className="bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text">portefeuille</span> souhaitez-vous créer ? </h2>
                     {/* Deuxième formulaire avec 4 boutons numérotés */}
-                    <div className="grid gap-4 grid-cols-4">
+                    <div className="grid gap-4 grid-cols-4 m-2">
                         {[1, 2, 3, 4].map((number) => (
                              <Button variant="secondary" className={selectedButton === number ? 'bg-gradient-to-r from-blue-500 to-purple-500' : ''} key={number} onClick={() => {
                                     setNumberOfInputsToShow(number); 
@@ -129,7 +136,7 @@ const OwnerSignUpForm = () => {
                             </Button>
                         ))}
                     </div>
-                    <Button onClick={handleSecondFormSubmit} disabled={isLoading}>
+                    <Button className='mx-2' onClick={handleSecondFormSubmit} disabled={isLoading}>
                         {isLoading && (
                             <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
                         )}
@@ -142,13 +149,13 @@ const OwnerSignUpForm = () => {
             {showThirdForm && (
                 <div className="grid gap-6 lg:w-[500px] m-auto">
                     {/* Troisième formulaire ou contenu */}
-                    <h2 className='font-bold text-3xl m-auto'>Pour finir, créez vos portefeuilles ! </h2>
+                    <h2 className='font-bold text-3xl m-auto ml-2 lg:ml-2'>Pour finir, créez vos <span className="bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text">portefeuilles</span></h2>
                     {/* Vos éléments de formulaire ou contenu supplémentaire ici */}
                     <div className="grid gap-1">
                     {[...Array(numberOfInputsToShow)].map((_, index) => (
                                 <div key={index}>
-                                    <Label htmlFor={`input-${index}`}>Portefeuille {index + 1}</Label>
-                                    <div className='grid grid-cols-2'>
+                                    <Label className='ml-2 lg:ml-2' htmlFor={`input-${index}`}>Portefeuille {index + 1}</Label>
+                                    <div className='grid grid-cols-1 lg:grid-cols-2 p-2'>
                                     <Input
                                         id={`input-${index}`}
                                         placeholder={'Entrez le nom'}
@@ -158,12 +165,12 @@ const OwnerSignUpForm = () => {
                                         autoCorrect="off"
                                         disabled={isLoading}
                                     />
-                                    <Button className='ml-5 bg-gradient-to-r from-blue-500 to-purple-500' type="submit">Créer le portefeuille<FaWallet className='ml-2' /></Button>
+                                    <Button className='mt-3 md:mt-3 lg:mt-0 lg:ml-3 bg-gradient-to-r from-blue-500 to-purple-500' type="submit">Créer le portefeuille<FaWallet className='ml-2' /></Button>
                                     </div>
                         </div>
                     ))}
                 </div>
-                <Button  onClick={handleSecondFormSubmit} disabled={isLoading}>
+                <Button  className='m-2' onClick={handleSecondFormSubmit} disabled={isLoading}>
                         {isLoading && (
                             <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
                         )}
