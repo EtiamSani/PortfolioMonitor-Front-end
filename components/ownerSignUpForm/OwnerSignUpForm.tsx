@@ -10,8 +10,12 @@ import { FaWallet } from "react-icons/fa";
 import { LuLogIn } from "react-icons/lu";
 import Image from 'next/image'
 import { jwtDecode } from "jwt-decode";
+import { useRouter } from 'next/navigation'
+
 
 const OwnerSignUpForm = () => {
+    const router = useRouter();
+    
     const [isLoading, setIsLoading] = useState<boolean>(false)
     const [showPassword, setShowPassword] = useState<boolean>(false);
     const [showSecondForm, setShowSecondForm] = useState(false);
@@ -177,6 +181,15 @@ useEffect(() => {
     }
   }
 
+  const handleLogOnPortfolios = async (event: React.SyntheticEvent) => {
+    event.preventDefault()
+    
+    const token = localStorage.getItem('token');
+    if(token){
+      router.push('/my-portfolios');
+    }
+  }
+
     return (
         <div className='grid lg:grid-cols-2 justify-items-center mt-[300px] md:mt-[300px] sm:mt-[300px] lg:mt-0'>
             <div className='bg-black w-full hidden lg:block lg:h-screen'>
@@ -337,7 +350,7 @@ useEffect(() => {
                         </div>
                     ))}
                 </div>
-                <Button  className='m-2' onClick={handleThirdFormSubmit} disabled={loginButtonDisabled}>
+                <Button  className='m-2' onClick={handleLogOnPortfolios} disabled={loginButtonDisabled}>
                         {isLoading && (
                             <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
                         )}
