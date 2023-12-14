@@ -12,10 +12,13 @@ import Image from 'next/image'
 import { jwtDecode } from "jwt-decode";
 import { useRouter } from 'next/navigation'
 
+interface Owner {
+  ownerId: string
+}
 
 const OwnerSignUpForm = () => {
     const router = useRouter();
-    
+
     const [isLoading, setIsLoading] = useState<boolean>(false)
     const [showPassword, setShowPassword] = useState<boolean>(false);
     const [showSecondForm, setShowSecondForm] = useState(false);
@@ -72,12 +75,16 @@ const OwnerSignUpForm = () => {
     setTimeout(() => {
         setIsLoading(false);
         setShowThirdForm(true);
+        setNumberOfInputsToShow(selectedButton); // Mettre à jour le nombre de formulaires à afficher
+        setInputDisabledState(Array.from({ length: selectedButton }, () => false)); // Réinitialiser l'état de chaque portefeuille
     }, 1000);
 }
 
-async function handleThirdFormSubmit(event: React.SyntheticEvent) {
+async function handleThirdFormSubmit(e: React.SyntheticEvent, index:any) {
   console.log('3ieme forme et portfoioname', portfolioNames )
-  event.preventDefault();
+ 
+    e.preventDefault();
+ 
   setIsLoading(true);
   
   const ownerId = localStorage.getItem('ownerId')
@@ -143,7 +150,9 @@ const handleSignUp = async (data: any) => {
       console.log('Decoded Token:', decodedToken);
       const ownerId = decodedToken.sub
       console.log('ownerid', ownerId)
-      localStorage.setItem('ownerId', ownerId)
+      if(typeof ownerId !== 'undefined') {
+        localStorage.setItem('ownerId', ownerId)
+      }
     // Gérer la réponse du serveur, redirection, notifications, etc.
   } catch (error) {
     console.error('Sign-up failed:', error);
@@ -336,7 +345,7 @@ useEffect(() => {
                                         <Button
                                             className='mt-3 md:mt-3 lg:mt-0 lg:ml-3 bg-gradient-to-r from-blue-500 to-purple-500'
                                             type="submit"
-                                            onClick={handleThirdFormSubmit}
+                                            onClick={(e) => handleThirdFormSubmit(e, index)}
                                             disabled={isLoading || portfolioCreating || submitButtonDisabled} // Désactiver le bouton lorsqu'il est en cours de chargement ou s'il a déjà été cliqué
                                         >
                                             {isLoading && portfolioCreating && (
@@ -350,7 +359,7 @@ useEffect(() => {
                         </div>
                     ))}
                 </div>
-                <Button  className='m-2' onClick={handleLogOnPortfolios} disabled={loginButtonDisabled}>
+                <Button  className='m-2' onClick={handleLogOnPortfolios} disabled={inputDisabledState.some(disabled => !disabled)}>
                         {isLoading && (
                             <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
                         )}
