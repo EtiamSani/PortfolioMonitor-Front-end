@@ -3,36 +3,35 @@ import { FiLogOut } from "react-icons/fi";
 import { FaRegFile } from "react-icons/fa6";
 import { GoHomeFill } from "react-icons/go";
 import { MdOutlineDashboard } from "react-icons/md";
-
 export const sidebarData = [
   {
     textBesideSideBarButton: "Mes portefeuilles",
     IconComponent: (
-      <GoHomeFill className="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
+      <GoHomeFill className="text-2xl text-black transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
     ),
   },
   {
     textBesideSideBarButton: "Dashboard",
     IconComponent: (
-      <MdOutlineDashboard className="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
+      <MdOutlineDashboard className="text-2xl text-black transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
     ),
   },
   {
-    textBesideSideBarButton: "Abonnées",
+    textBesideSideBarButton: "Abonnés",
     IconComponent: (
-      <HiMiniUsers className="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
+      <HiMiniUsers className="text-2xl text-blacktransition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
     ),
   },
   {
     textBesideSideBarButton: "Analyses",
     IconComponent: (
-      <FaRegFile className="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
+      <FaRegFile className="text-2xl text-black transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
     ),
   },
   {
     textBesideSideBarButton: "Déconnexion",
     IconComponent: (
-      <FiLogOut className="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
+      <FiLogOut className="text-2xl text-red-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
     ),
   },
 ];
