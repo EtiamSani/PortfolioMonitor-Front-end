@@ -5,6 +5,8 @@ import { GoHomeFill } from "react-icons/go";
 import { MdOutlineDashboard } from "react-icons/md";
 import SidebarButtons from "./SidebarButtons";
 import sidebarData from "@/utils/SideBarBouttonsInformation";
+import { Separator } from "@/components/ui/separator";
+
 const Sidebar = () => {
   return (
     <aside
@@ -16,6 +18,10 @@ const Sidebar = () => {
         <h1 className="p-2 text-4xl bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text font-bold mb-10">
           EIP Portfolio{" "}
         </h1>
+        <Separator />
+        <div className="m-5">Bonjour jean</div>
+        <Separator className="mb-5" />
+        menu
         <ul className="space-y-2 font-medium">
           {sidebarData.map((buttonData, index) => (
             <SidebarButtons
