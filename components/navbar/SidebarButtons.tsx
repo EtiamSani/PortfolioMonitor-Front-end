@@ -13,7 +13,7 @@ const SidebarButtons = ({ textBesideSideBarButton, IconComponent }: any) => {
             {IconComponent && (
               <div className="flex items-center">
                 {IconComponent}
-                <span className="ms-3 text-lg">{textBesideSideBarButton}</span>
+                <span className="ms-3 text-md">{textBesideSideBarButton}</span>
               </div>
             )}
           </div>

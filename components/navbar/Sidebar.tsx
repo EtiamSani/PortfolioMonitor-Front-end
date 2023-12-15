@@ -1,8 +1,3 @@
-import { HiMiniUsers } from "react-icons/hi2";
-import { FiLogOut } from "react-icons/fi";
-import { FaRegFile } from "react-icons/fa6";
-import { GoHomeFill } from "react-icons/go";
-import { MdOutlineDashboard } from "react-icons/md";
 import SidebarButtons from "./SidebarButtons";
 import sidebarData from "@/utils/SideBarBouttonsInformation";
 import { Separator } from "@/components/ui/separator";
@@ -11,7 +6,7 @@ const Sidebar = () => {
   return (
     <aside
       id="default-sidebar"
-      className="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
+      className="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0 shadow-2xl"
       aria-label="Sidebar"
     >
       <div className="h-full px-3 py-4 overflow-y-auto bg-white dark:bg-gray-800">
