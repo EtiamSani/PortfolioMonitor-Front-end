@@ -9,16 +9,16 @@ import {
 } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import PortfolioTable from "./PortfolioTable";
-import Test from "./Test";
+import { cookies } from "next/headers";
 
 const fetchPortfolioNames = async () => {
+  const cookieStore = cookies();
+  const cookieInformation = cookieStore.get("ownerId");
+  const ownerId = cookieInformation.value;
   try {
-    const response = await fetch(
-      "http://localhost:3001/portfolio/6fe63217-d4f1-45c5-9c01-911e8607ff7d",
-      {
-        cache: "no-store",
-      }
-    );
+    const response = await fetch(`http://localhost:3001/portfolio/${ownerId}`, {
+      cache: "no-store",
+    });
     if (!response.ok) {
       throw new Error("Network response was not ok.");
     }

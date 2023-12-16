@@ -3,6 +3,18 @@ import { FiLogOut } from "react-icons/fi";
 import { FaRegFile } from "react-icons/fa6";
 import { GoHomeFill } from "react-icons/go";
 import { MdOutlineDashboard } from "react-icons/md";
+import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
+
+const handleDeconnexion = () => {
+  const router = useRouter();
+  // Fonction pour "Déconnexion"
+  console.log("Action pour Déconnexion");
+  localStorage.clear();
+  Cookies.remove("ownerId");
+  router.push("/signup-owner-portfolio");
+};
+
 export const sidebarData = [
   {
     textBesideSideBarButton: "Mes portefeuilles",
@@ -33,6 +45,7 @@ export const sidebarData = [
     IconComponent: (
       <FiLogOut className="text-2xl text-red-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
     ),
+    onClick: handleDeconnexion,
   },
 ];
 

@@ -1,7 +1,7 @@
 import Sidebar from "@/components/navbar/Sidebar";
 import React from "react";
 import TableTabs from "../../components/portfolio-table/TableTabs";
-import Test from "../../components/portfolio-table/test";
+
 
 const page = () => {
   return (
@@ -10,7 +10,6 @@ const page = () => {
       <div className="flex">
         <Sidebar />
         <TableTabs />
-        <Test />
       </div>
     </div>
   );

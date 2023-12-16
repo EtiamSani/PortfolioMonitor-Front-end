@@ -8,6 +8,7 @@ import { FaWallet } from "react-icons/fa";
 import { LuLogIn } from "react-icons/lu";
 import { useRouter } from "next/navigation";
 import { jwtDecode } from "jwt-decode";
+import Cookies from "js-cookie";
 
 const ThirdForm = (props: {
   setShowThirdForm: (arg0: boolean) => void;
@@ -95,6 +96,7 @@ const ThirdForm = (props: {
     if (token) {
       const decodedToken = jwtDecode(token);
       const ownerId = decodedToken.sub;
+      Cookies.set("ownerId", ownerId);
       router.push(`/my-portfolios/${ownerId}`);
     }
   };

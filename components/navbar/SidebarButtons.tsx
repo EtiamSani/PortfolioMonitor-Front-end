@@ -1,13 +1,19 @@
+"use client";
 import React from "react";
 import { Button } from "../ui/button";
 
-const SidebarButtons = ({ textBesideSideBarButton, IconComponent }: any) => {
+const SidebarButtons = ({
+  textBesideSideBarButton,
+  IconComponent,
+  onClick,
+}: any) => {
   return (
     <li>
       <div className="w-full ">
         <Button
           variant="noStyle"
           className="flex items-center py-6 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group w-full"
+          onClick={onClick}
         >
           <div className="w-full">
             {IconComponent && (
