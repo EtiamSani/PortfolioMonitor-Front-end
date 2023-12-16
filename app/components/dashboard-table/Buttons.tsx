@@ -5,7 +5,7 @@ import CompanyModal from "./CompanyModal";
 
 const Buttons = () => {
   return (
-    <div className="ml-[350px] mt-[100px]">
+    <div className="ml-[600px] mt-[200px]">
       <div className="flex ">
         <Dialog>
           <DialogTrigger asChild>

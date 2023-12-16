@@ -23,11 +23,15 @@ const fetchPortfolioNames = async () => {
 
 const TableTabs = async () => {
   const names = await fetchPortfolioNames();
+  const firstPortfolioName = names[0].name;
+
   const numCols = names.length === 4 ? 4 : names.length;
-  console.log(numCols);
 
   return (
-    <Tabs defaultValue="account" className="w-[1250px] ml-[400px] mt-[80px]">
+    <Tabs
+      defaultValue={firstPortfolioName}
+      className="w-[1250px] ml-[400px] mt-[80px]"
+    >
       <TabsList className={`grid w-full lg:grid-cols-${numCols}`}>
         {names.map((name) => (
           <TabsTrigger key={name.id} value={name.name} className=" ">
@@ -42,7 +46,7 @@ const TableTabs = async () => {
               <CardTitle>{name.name}</CardTitle>
             </CardHeader>
             <CardContent className="space-y-2">
-              <PortfolioTable name={name.name} />
+              <PortfolioTable company={name.PortfolioCompany} />
             </CardContent>
           </Card>
         </TabsContent>

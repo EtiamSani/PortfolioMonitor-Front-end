@@ -28,7 +28,7 @@ const DashboardTableTabs = async () => {
   console.log(numCols);
 
   return (
-    <Tabs defaultValue="account" className="w-[850px] ml-[600px] mt-[80px]">
+    <Tabs defaultValue="account" className="w-[850px] ml-[600px] mt-[15px]">
       <TabsList className={`grid w-full lg:grid-cols-${numCols}`}>
         {names.map((name) => (
           <TabsTrigger key={name.id} value={name.name} className=" ">

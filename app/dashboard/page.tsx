@@ -5,7 +5,7 @@ import DashboardTableTabs from "../components/dashboard-table/DashboardTableTabs
 
 const page = () => {
   return (
-    <div>
+    <div className="bg-[#dfe4ed] h-screen">
       <Sidebar />
       <div className="flex flex-col">
         <Buttons />
