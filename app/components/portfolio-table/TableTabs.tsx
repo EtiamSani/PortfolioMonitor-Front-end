@@ -28,12 +28,15 @@ const fetchPortfolioNames = async () => {
     throw error;
   }
 };
+
 const TableTabs = async () => {
   const names = await fetchPortfolioNames();
+  const numCols = names.length === 4 ? 4 : names.length;
+  console.log(numCols);
 
   return (
-    <Tabs defaultValue="account" className="w-[400px] m-auto mt-48">
-      <TabsList className="grid w-full grid-cols-4">
+    <Tabs defaultValue="account" className="w-[1250px] ml-[400px] mt-[80px]">
+      <TabsList className={`grid w-full lg:grid-cols-${numCols}`}>
         {names.map((name) => (
           <TabsTrigger key={name.id} value={name.name} className=" ">
             {name.name}
@@ -45,16 +48,10 @@ const TableTabs = async () => {
           <Card>
             <CardHeader>
               <CardTitle>{name.name}</CardTitle>
-              <CardDescription>
-                Make changes to your account here. Click save when you're done.
-              </CardDescription>
             </CardHeader>
             <CardContent className="space-y-2">
               <PortfolioTable name={name.name} />
             </CardContent>
-            <CardFooter>
-              <Button>Save changes</Button>
-            </CardFooter>
           </Card>
         </TabsContent>
       ))}

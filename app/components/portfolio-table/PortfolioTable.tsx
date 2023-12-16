@@ -61,10 +61,19 @@ const PortfolioTable = ({ name }: any) => {
       <TableCaption>A list of your recent invoices.</TableCaption>
       <TableHeader>
         <TableRow>
-          <TableHead className="w-[100px]">{name}</TableHead>
-          <TableHead>Status</TableHead>
-          <TableHead>Method</TableHead>
-          <TableHead className="text-right">Amount</TableHead>
+          <TableHead className="w-[100px]">Nom</TableHead>
+          <TableHead>Pays</TableHead>
+          <TableHead>Devise</TableHead>
+          <TableHead className="text-right">Devise</TableHead>
+          <TableHead>Capitalisation</TableHead>
+          <TableHead>PER</TableHead>
+          <TableHead>Nb de parts</TableHead>
+          <TableHead>PRU</TableHead>
+          <TableHead>prix de marché</TableHead>
+          <TableHead>Valeur PRU</TableHead>
+          <TableHead>Gain/Perte</TableHead>
+          <TableHead>PV/MV</TableHead>
+          <TableHead>Poids</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>

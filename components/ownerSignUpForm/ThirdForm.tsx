@@ -97,7 +97,7 @@ const ThirdForm = (props: {
       const decodedToken = jwtDecode(token);
       const ownerId = decodedToken.sub;
       Cookies.set("ownerId", ownerId);
-      router.push(`/my-portfolios/${ownerId}`);
+      router.push("/my-portfolios/");
     }
   };
   return (
