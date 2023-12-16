@@ -7,6 +7,7 @@ import Link from "next/link";
 import { FaWallet } from "react-icons/fa";
 import { LuLogIn } from "react-icons/lu";
 import { useRouter } from "next/navigation";
+import { jwtDecode } from "jwt-decode";
 
 const ThirdForm = (props: {
   setShowThirdForm: (arg0: boolean) => void;
@@ -92,7 +93,9 @@ const ThirdForm = (props: {
 
     const token = localStorage.getItem("token");
     if (token) {
-      router.push("/my-portfolios");
+      const decodedToken = jwtDecode(token);
+      const ownerId = decodedToken.sub;
+      router.push(`/my-portfolios/${ownerId}`);
     }
   };
   return (

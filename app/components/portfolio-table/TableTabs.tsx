@@ -7,15 +7,17 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import PortfolioTable from "./PortfolioTable";
+import Test from "./Test";
 
 const fetchPortfolioNames = async () => {
   try {
     const response = await fetch(
-      "http://localhost:3001/portfolio/0dd28230-fcb5-4828-a018-0c9a7a66d981"
+      "http://localhost:3001/portfolio/6fe63217-d4f1-45c5-9c01-911e8607ff7d",
+      {
+        cache: "no-store",
+      }
     );
     if (!response.ok) {
       throw new Error("Network response was not ok.");
@@ -28,7 +30,6 @@ const fetchPortfolioNames = async () => {
 };
 const TableTabs = async () => {
   const names = await fetchPortfolioNames();
-  console.log(names.name);
 
   return (
     <Tabs defaultValue="account" className="w-[400px] m-auto mt-48">
