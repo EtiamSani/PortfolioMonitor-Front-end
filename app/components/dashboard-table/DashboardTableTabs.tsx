@@ -1,7 +1,8 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import PortfolioTable from "./PortfolioTable";
+
 import { cookies } from "next/headers";
+import DashboardTable from "./DashboardTable";
 
 const fetchPortfolioNames = async () => {
   const cookieStore = cookies();
@@ -21,13 +22,13 @@ const fetchPortfolioNames = async () => {
   }
 };
 
-const TableTabs = async () => {
+const DashboardTableTabs = async () => {
   const names = await fetchPortfolioNames();
   const numCols = names.length === 4 ? 4 : names.length;
   console.log(numCols);
 
   return (
-    <Tabs defaultValue="account" className="w-[1250px] ml-[400px] mt-[80px]">
+    <Tabs defaultValue="account" className="w-[850px] ml-[600px] mt-[80px]">
       <TabsList className={`grid w-full lg:grid-cols-${numCols}`}>
         {names.map((name) => (
           <TabsTrigger key={name.id} value={name.name} className=" ">
@@ -42,36 +43,13 @@ const TableTabs = async () => {
               <CardTitle>{name.name}</CardTitle>
             </CardHeader>
             <CardContent className="space-y-2">
-              <PortfolioTable name={name.name} />
+              <DashboardTable name={name.name} />
             </CardContent>
           </Card>
         </TabsContent>
       ))}
-      {/* <TabsContent value="password">
-        <Card>
-          <CardHeader>
-            <CardTitle>Password</CardTitle>
-            <CardDescription>
-              Change your password here. After saving, you'll be logged out.
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-2">
-            <div className="space-y-1">
-              <Label htmlFor="current">Current password</Label>
-              <Input id="current" type="password" />
-            </div>
-            <div className="space-y-1">
-              <Label htmlFor="new">New password</Label>
-              <Input id="new" type="password" />
-            </div>
-          </CardContent>
-          <CardFooter>
-            <Button>Save password</Button>
-          </CardFooter>
-        </Card>
-      </TabsContent> */}
     </Tabs>
   );
 };
 
-export default TableTabs;
+export default DashboardTableTabs;

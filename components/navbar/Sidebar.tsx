@@ -21,6 +21,14 @@ const Sidebar = () => {
     router.push("/signup-portfolio-owner");
   };
 
+  const handleDashboard = () => {
+    router.push("/dashboard");
+  };
+
+  const handlePortfolio = () => {
+    router.push("/my-portfolios");
+  };
+
   return (
     <aside
       id="default-sidebar"
@@ -37,7 +45,7 @@ const Sidebar = () => {
               <Button
                 variant="noStyle"
                 className="flex items-center py-6 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group w-full"
-                onClick={handleHome}
+                onClick={handlePortfolio}
               >
                 <div className="w-full">
                   <div className="flex items-center">
@@ -53,7 +61,7 @@ const Sidebar = () => {
               <Button
                 variant="noStyle"
                 className="flex items-center py-6 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group w-full"
-                onClick={handleHome}
+                onClick={handleDashboard}
               >
                 <div className="w-full">
                   <div className="flex items-center">

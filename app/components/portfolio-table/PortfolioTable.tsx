@@ -64,7 +64,7 @@ const PortfolioTable = ({ name }: any) => {
           <TableHead className="w-[100px]">Nom</TableHead>
           <TableHead>Pays</TableHead>
           <TableHead>Devise</TableHead>
-          <TableHead className="text-right">Devise</TableHead>
+          <TableHead>Catégories</TableHead>
           <TableHead>Capitalisation</TableHead>
           <TableHead>PER</TableHead>
           <TableHead>Nb de parts</TableHead>
@@ -82,14 +82,14 @@ const PortfolioTable = ({ name }: any) => {
             <TableCell className="font-medium">{invoice.invoice}</TableCell>
             <TableCell>{invoice.paymentStatus}</TableCell>
             <TableCell>{invoice.paymentMethod}</TableCell>
-            <TableCell className="text-right">{invoice.totalAmount}</TableCell>
+            <TableCell>{invoice.totalAmount}</TableCell>
           </TableRow>
         ))}
       </TableBody>
       <TableFooter>
         <TableRow>
           <TableCell colSpan={3}>Total</TableCell>
-          <TableCell className="text-right">$2,500.00</TableCell>
+          <TableCell>$2,500.00</TableCell>
         </TableRow>
       </TableFooter>
     </Table>
