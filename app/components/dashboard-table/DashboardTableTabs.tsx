@@ -4,6 +4,7 @@ import { FaPenToSquare } from "react-icons/fa6";
 
 import { cookies } from "next/headers";
 import DashboardTable from "./DashboardTable";
+import Buttons from "./Buttons";
 
 const fetchPortfolioNames = async () => {
   const cookieStore = cookies();
@@ -32,7 +33,7 @@ const DashboardTableTabs = async () => {
   return (
     <Tabs
       defaultValue={firstPortfolioName}
-      className="w-[850px] ml-[600px] mt-[15px]"
+      className="w-[1150px] ml-[500px] mt-[120px]"
     >
       <TabsList className={`grid w-full lg:grid-cols-${numCols}`}>
         {names.map((name) => (
@@ -44,6 +45,7 @@ const DashboardTableTabs = async () => {
       {names.map((name) => (
         <TabsContent key={name.id} value={name.name}>
           <Card>
+            <Buttons portfolioId={name.id} />
             <CardHeader>
               <CardTitle>
                 <div className="flex text-[#003F91] text-xl items-center">

@@ -8,7 +8,7 @@ const page = () => {
     <div className="bg-[#dfe4ed] h-screen">
       <Sidebar />
       <div className="flex flex-col">
-        <Buttons />
+        {/* <Buttons /> */}
         <DashboardTableTabs />
       </div>
     </div>
