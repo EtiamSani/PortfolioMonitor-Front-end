@@ -13,9 +13,7 @@ const fetchPortfolioNames = async () => {
   const ownerId = cookieInformation.value;
 
   try {
-    const response = await fetch(`http://localhost:3001/portfolio/${ownerId}`, {
-      next: { tags: ["dashboard"] },
-    });
+    const response = await fetch(`http://localhost:3001/portfolio/${ownerId}`);
     if (!response.ok) {
       throw new Error("Network response was not ok.");
     }

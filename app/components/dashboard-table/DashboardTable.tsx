@@ -14,36 +14,9 @@ import { GiPayMoney } from "react-icons/gi";
 import { GiReceiveMoney } from "react-icons/gi";
 import { BsBuildingFillGear } from "react-icons/bs";
 import { BsBuildingFillX } from "react-icons/bs";
-import { useFormState } from "react-dom";
 import { deleteCompany } from "@/app/actions";
 
 const DashboardTable = ({ company }: any) => {
-  const handleDeleteCompany = async (companyId: string) => {
-    try {
-      console.log("Trying to delete company with ID:", companyId);
-      // Envoie de la requête DELETE à l'API
-      const response = await fetch(
-        `http://localhost:3001/company/delete-company/${companyId}`,
-        {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-
-      if (response.ok) {
-        // Actualiser l'affichage après suppression de l'entreprise
-        // onDeleteCompany(companyId);
-        console.log("cest suppp");
-      } else {
-        throw new Error("Erreur lors de la suppression de l'entreprise");
-      }
-    } catch (error) {
-      console.error(error);
-      // Gérer les erreurs ou afficher un message à l'utilisateur
-    }
-  };
   return (
     <div className="m-auto">
       <Table className="w-[1200px] mt-[30px] ">
