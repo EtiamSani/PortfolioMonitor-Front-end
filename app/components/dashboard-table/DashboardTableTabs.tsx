@@ -6,6 +6,7 @@ import { cookies } from "next/headers";
 import DashboardTable from "./DashboardTable";
 import Buttons from "./Buttons";
 
+
 const fetchPortfolioNames = async () => {
   const cookieStore = cookies();
   const cookieInformation = cookieStore.get("ownerId");

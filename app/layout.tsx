@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import { Inter, Rubik } from "next/font/google";
 import './globals.css'
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
 
 const rubik = Rubik({ subsets: ["latin"] });
 

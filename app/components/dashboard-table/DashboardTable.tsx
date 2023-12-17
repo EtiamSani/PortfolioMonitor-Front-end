@@ -14,6 +14,8 @@ import { GiPayMoney } from "react-icons/gi";
 import { GiReceiveMoney } from "react-icons/gi";
 import { BsBuildingFillGear } from "react-icons/bs";
 import { BsBuildingFillX } from "react-icons/bs";
+import { useFormState } from "react-dom";
+import { deleteCompany } from "@/app/actions";
 
 const DashboardTable = ({ company }: any) => {
   const handleDeleteCompany = async (companyId: string) => {
@@ -104,7 +106,7 @@ const DashboardTable = ({ company }: any) => {
                     </Button>
                     <Button
                       className="bg-[#003F91] p-5 hover:bg-[#1B98E0] "
-                      onClick={() => handleDeleteCompany(companyId)}
+                      onClick={() => deleteCompany(companyId)}
                     >
                       <BsBuildingFillX className="text-xl mr-3" />
                       <div>Supprimer</div>
