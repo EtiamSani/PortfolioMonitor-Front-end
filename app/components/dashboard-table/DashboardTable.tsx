@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import {
   Table,
   TableBody,
@@ -8,6 +9,10 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { GiPayMoney } from "react-icons/gi";
+import { GiReceiveMoney } from "react-icons/gi";
+import { BsBuildingFillGear } from "react-icons/bs";
+import { BsBuildingFillX } from "react-icons/bs";
 
 const invoices = [
   {
@@ -77,6 +82,29 @@ const DashboardTable = () => {
               <TableCell>{invoice.paymentStatus}</TableCell>
               <TableCell>{invoice.paymentMethod}</TableCell>
               <TableCell>{invoice.totalAmount}</TableCell>
+              <TableCell>{invoice.totalAmount}</TableCell>
+              <TableCell>{invoice.totalAmount}</TableCell>
+              <TableCell>{invoice.totalAmount}</TableCell>
+              <TableCell>
+                <div className="flex gap-2">
+                  <Button className="bg-[#003F91] p-5 hover:bg-[#1B98E0]">
+                    <GiPayMoney className="text-xl mr-3" />
+                    <div>Achat</div>
+                  </Button>
+                  <Button className="bg-[#003F91] p-5 hover:bg-[#1B98E0]">
+                    <GiReceiveMoney className="text-xl mr-3" />
+                    <div>Vente</div>
+                  </Button>
+                  <Button className="bg-[#003F91] p-5 hover:bg-[#1B98E0]">
+                    <BsBuildingFillGear className="text-xl mr-3" />
+                    <div>Modifier</div>
+                  </Button>
+                  <Button className="bg-[#003F91] p-5 hover:bg-[#1B98E0]">
+                    <BsBuildingFillX className="text-xl mr-3" />
+                    <div>Supprimer</div>
+                  </Button>
+                </div>
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>

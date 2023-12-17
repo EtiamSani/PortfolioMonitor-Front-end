@@ -13,8 +13,11 @@ const Greeting = () => {
   }
   return (
     <div>
-      <h1 className="ml-[400px] text-4xl mt-10">
-        <span className="font-bold">👋 Bonjour {ownerName},</span> Re-bienvenue
+      <h1 className="ml-[400px] text-4xl mt-10 text-slate-600">
+        <span className="font-bold text-slate-600">
+          👋 Bonjour <span className="text-[#003F91]">{ownerName}</span>,
+        </span>{" "}
+        Re-bienvenue
       </h1>
     </div>
   );

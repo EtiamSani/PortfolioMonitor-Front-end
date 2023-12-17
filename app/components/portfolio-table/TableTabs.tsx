@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import PortfolioTable from "./PortfolioTable";
 import { cookies } from "next/headers";
+import { FaWallet } from "react-icons/fa";
 
 const fetchPortfolioNames = async () => {
   const cookieStore = cookies();
@@ -28,30 +29,39 @@ const TableTabs = async () => {
   const numCols = names.length === 4 ? 4 : names.length;
 
   return (
-    <Tabs
-      defaultValue={firstPortfolioName}
-      className="w-[1250px] ml-[400px] mt-[80px]"
-    >
-      <TabsList className={`grid w-full lg:grid-cols-${numCols}`}>
+    <div className="flex flex-col">
+      <h2 className="ml-[410px] mt-20 font-bold text-xl text-[#003F91]">
+        Mes portefeuilles
+      </h2>
+      <Tabs
+        defaultValue={firstPortfolioName}
+        className="w-[1250px] ml-[400px] mt-5"
+      >
+        <TabsList className={`grid w-full lg:grid-cols-${numCols}`}>
+          {names.map((name) => (
+            <TabsTrigger key={name.id} value={name.name} className=" ">
+              {name.name}
+            </TabsTrigger>
+          ))}
+        </TabsList>
         {names.map((name) => (
-          <TabsTrigger key={name.id} value={name.name} className=" ">
-            {name.name}
-          </TabsTrigger>
+          <TabsContent key={name.id} value={name.name}>
+            <Card>
+              <CardHeader>
+                <CardTitle>
+                  <div className="flex text-[#003F91] text-xl items-center">
+                    <FaWallet className="mr-2" />
+                    {name.name}
+                  </div>
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-2">
+                <PortfolioTable company={name.PortfolioCompany} />
+              </CardContent>
+            </Card>
+          </TabsContent>
         ))}
-      </TabsList>
-      {names.map((name) => (
-        <TabsContent key={name.id} value={name.name}>
-          <Card>
-            <CardHeader>
-              <CardTitle>{name.name}</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-2">
-              <PortfolioTable company={name.PortfolioCompany} />
-            </CardContent>
-          </Card>
-        </TabsContent>
-      ))}
-      {/* <TabsContent value="password">
+        {/* <TabsContent value="password">
         <Card>
           <CardHeader>
             <CardTitle>Password</CardTitle>
@@ -74,7 +84,8 @@ const TableTabs = async () => {
           </CardFooter>
         </Card>
       </TabsContent> */}
-    </Tabs>
+      </Tabs>
+    </div>
   );
 };
 

@@ -2,14 +2,17 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { BsBuildingAdd } from "react-icons/bs";
 import { TbCategoryPlus } from "react-icons/tb";
 import CompanyModal from "./CompanyModal";
+import { Button } from "@/components/ui/button";
 
 const Buttons = () => {
   return (
-    <div className="ml-[600px] mt-[200px]">
+    <div className="ml-[600px] mt-[200px] ">
       <div className="flex ">
         <Dialog>
           <DialogTrigger asChild>
-            <BsBuildingAdd className="text-3xl cursor-pointer" />
+            <Button className="bg-[#003F91] p-5 hover:bg-[#1B98E0]">
+              <BsBuildingAdd className="text-3xl cursor-pointer" />
+            </Button>
           </DialogTrigger>
 
           <DialogTrigger asChild>

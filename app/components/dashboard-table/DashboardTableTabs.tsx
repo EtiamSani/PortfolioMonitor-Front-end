@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { FaPenToSquare } from "react-icons/fa6";
 
 import { cookies } from "next/headers";
 import DashboardTable from "./DashboardTable";
@@ -8,6 +9,7 @@ const fetchPortfolioNames = async () => {
   const cookieStore = cookies();
   const cookieInformation = cookieStore.get("ownerId");
   const ownerId = cookieInformation.value;
+
   try {
     const response = await fetch(`http://localhost:3001/portfolio/${ownerId}`, {
       cache: "no-store",
@@ -25,10 +27,13 @@ const fetchPortfolioNames = async () => {
 const DashboardTableTabs = async () => {
   const names = await fetchPortfolioNames();
   const numCols = names.length === 4 ? 4 : names.length;
-  console.log(numCols);
+  const firstPortfolioName = names[0].name;
 
   return (
-    <Tabs defaultValue="account" className="w-[850px] ml-[600px] mt-[15px]">
+    <Tabs
+      defaultValue={firstPortfolioName}
+      className="w-[850px] ml-[600px] mt-[15px]"
+    >
       <TabsList className={`grid w-full lg:grid-cols-${numCols}`}>
         {names.map((name) => (
           <TabsTrigger key={name.id} value={name.name} className=" ">
@@ -40,7 +45,12 @@ const DashboardTableTabs = async () => {
         <TabsContent key={name.id} value={name.name}>
           <Card>
             <CardHeader>
-              <CardTitle>{name.name}</CardTitle>
+              <CardTitle>
+                <div className="flex text-[#003F91] text-xl items-center">
+                  <FaPenToSquare className="mr-2" />
+                  {name.name}
+                </div>
+              </CardTitle>
             </CardHeader>
             <CardContent className="space-y-2">
               <DashboardTable name={name.name} />
