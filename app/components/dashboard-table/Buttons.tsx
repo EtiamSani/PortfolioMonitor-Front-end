@@ -5,7 +5,7 @@ import { TbCategoryPlus } from "react-icons/tb";
 import CompanyModal from "./CompanyModal";
 import { Button } from "@/components/ui/button";
 
-const Buttons = ({ portfolioId }: any) => {
+const Buttons = ({ portfolioId, handleSubmit }: any) => {
   return (
     <div className="ml-7 ">
       <div className="flex ">
@@ -18,7 +18,10 @@ const Buttons = ({ portfolioId }: any) => {
           </DialogTrigger>
 
           <DialogContent className="sm:max-w-[425px]">
-            <CompanyModal portfolioId={portfolioId} />
+            <CompanyModal
+              portfolioId={portfolioId}
+              handleSubmit={handleSubmit}
+            />
           </DialogContent>
         </Dialog>
       </div>

@@ -13,7 +13,7 @@ const fetchPortfolioNames = async () => {
 
   try {
     const response = await fetch(`http://localhost:3001/portfolio/${ownerId}`, {
-      cache: "no-store",
+      next: { tags: ["dashboard"] },
     });
     if (!response.ok) {
       throw new Error("Network response was not ok.");
@@ -33,7 +33,7 @@ const DashboardTableTabs = async () => {
   return (
     <Tabs
       defaultValue={firstPortfolioName}
-      className="w-[1150px] ml-[500px] mt-[120px]"
+      className="w-[1290px] ml-[424px] mt-[120px]"
     >
       <TabsList className={`grid w-full lg:grid-cols-${numCols}`}>
         {names.map((name) => (
@@ -55,7 +55,10 @@ const DashboardTableTabs = async () => {
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-2">
-              <DashboardTable name={name.name} />
+              <DashboardTable
+                name={name.name}
+                company={name.PortfolioCompany}
+              />
             </CardContent>
           </Card>
         </TabsContent>

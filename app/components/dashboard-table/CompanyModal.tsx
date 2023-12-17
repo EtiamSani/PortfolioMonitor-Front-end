@@ -11,6 +11,7 @@ import { Label } from "@/components/ui/label";
 import React, { useState } from "react";
 import { Alert, AlertTitle } from "@/components/ui/alert";
 import { FaThumbsUp } from "react-icons/fa6";
+import { revalidatePath } from "next/cache";
 
 const CompanyModal = ({ portfolioId }: any) => {
   const [formData, setFormData] = useState({
@@ -176,6 +177,17 @@ const CompanyModal = ({ portfolioId }: any) => {
           <Input
             id="pru"
             value={formData.pru}
+            onChange={handleChange}
+            className="col-span-3"
+          />
+        </div>
+        <div className="grid grid-cols-4 items-center gap-4">
+          <Label htmlFor="username" className="text-right">
+            Type
+          </Label>
+          <Input
+            id="type"
+            value={formData.type}
             onChange={handleChange}
             className="col-span-3"
           />
