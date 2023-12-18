@@ -14,7 +14,7 @@ import { FaThumbsUp } from "react-icons/fa6";
 import { revalidatePath } from "next/cache";
 import { addCompany, handleSubmit } from "@/app/actions";
 
-const CompanyModal = ({ portfolioId }: any) => {
+const AddCompanyModal = ({ portfolioId }: any) => {
   const [formData, setFormData] = useState({
     name: "",
     ticker: "",
@@ -37,42 +37,6 @@ const CompanyModal = ({ portfolioId }: any) => {
       [id]: value,
     }));
   };
-
-  // const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-  //   e.preventDefault();
-  //   const formattedData = {
-  //     ...formData,
-  //     numberOfStocks: parseInt(formData.numberOfStocks, 10),
-  //     pru: parseInt(formData.pru, 10),
-  //   };
-  //   try {
-  //     const response = await fetch(
-  //       `http://localhost:3001/company/${portfolioId}`,
-  //       {
-  //         method: "POST",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //           // Ajoutez d'autres en-têtes si nécessaire
-  //         },
-  //         cache: "no-store",
-  //         body: JSON.stringify(formattedData),
-  //       }
-  //     );
-
-  //     if (!response.ok) {
-  //       throw new Error("Network response was not ok.");
-  //     }
-
-  //     const data = await response.json();
-  //     console.log("Company added:", data);
-  //     setSuccessMessage(true);
-  //     setTimeout(() => {
-  //       setSuccessMessage(false);
-  //     }, 4000);
-  //   } catch (error) {
-  //     console.error("Error adding company:", error);
-  //   }
-  // };
 
   return (
     <div>
@@ -211,4 +175,4 @@ const CompanyModal = ({ portfolioId }: any) => {
   );
 };
 
-export default CompanyModal;
+export default AddCompanyModal;

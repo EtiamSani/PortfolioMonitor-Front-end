@@ -4,7 +4,7 @@ import { FaPenToSquare } from "react-icons/fa6";
 
 import { cookies } from "next/headers";
 import DashboardTable from "./DashboardTable";
-import Buttons from "./Buttons";
+import Buttons from "./AddCompanyButton";
 
 
 const fetchPortfolioNames = async () => {

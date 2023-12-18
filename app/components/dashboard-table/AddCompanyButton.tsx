@@ -2,10 +2,10 @@
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { BsBuildingAdd } from "react-icons/bs";
 import { TbCategoryPlus } from "react-icons/tb";
-import CompanyModal from "./CompanyModal";
+import CompanyModal from "./AddCompanyModal";
 import { Button } from "@/components/ui/button";
 
-const Buttons = ({ portfolioId, handleSubmit }: any) => {
+const AddCompanyButton = ({ portfolioId, handleSubmit }: any) => {
   return (
     <div className="ml-7 ">
       <div className="flex ">
@@ -29,4 +29,4 @@ const Buttons = ({ portfolioId, handleSubmit }: any) => {
   );
 };
 
-export default Buttons;
+export default AddCompanyButton;
