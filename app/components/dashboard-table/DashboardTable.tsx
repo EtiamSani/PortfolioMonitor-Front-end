@@ -16,6 +16,7 @@ import { BsBuildingFillGear } from "react-icons/bs";
 import { BsBuildingFillX } from "react-icons/bs";
 import { deleteCompany } from "@/app/actions";
 import UpdateCompanyButton from "./UpdateCompanyButton";
+import BuyNewSharesButton from "./BuyNewSharesButton";
 
 const DashboardTable = ({ company }: any) => {
   return (
@@ -66,10 +67,7 @@ const DashboardTable = ({ company }: any) => {
                 <TableCell>{pru}</TableCell>
                 <TableCell>
                   <div className="flex gap-2">
-                    <Button className="bg-[#003F91] p-5 hover:bg-[#1B98E0]">
-                      <GiPayMoney className="text-xl mr-3" />
-                      <div>Achat</div>
-                    </Button>
+                    <BuyNewSharesButton companyId={companyId} />
                     <Button className="bg-[#003F91] p-5 hover:bg-[#1B98E0]">
                       <GiReceiveMoney className="text-xl mr-3" />
                       <div>Vente</div>
