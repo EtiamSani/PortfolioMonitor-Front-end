@@ -62,7 +62,6 @@ const DashboardTable = ({ company }: any) => {
                 <TableCell>{currency}</TableCell>
                 <TableCell>{stockCategory}</TableCell>
                 <TableCell>{capitalisation}</TableCell>
-                <TableCell>{per}</TableCell>
                 <TableCell>{numberOfStocks}</TableCell>
                 <TableCell>{pru}</TableCell>
                 <TableCell>

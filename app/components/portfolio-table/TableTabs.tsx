@@ -3,25 +3,26 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import PortfolioTable from "./PortfolioTable";
 import { cookies } from "next/headers";
 import { FaWallet } from "react-icons/fa";
+import { fetchPortfolioNames } from "@/app/actions";
 
-const fetchPortfolioNames = async () => {
-  const cookieStore = cookies();
-  const cookieInformation = cookieStore.get("ownerId");
-  const ownerId = cookieInformation.value;
-  try {
-    const response = await fetch(`http://localhost:3001/portfolio/${ownerId}`, {
-      next: { tags: ["company"] },
-    });
+// const fetchPortfolioNames = async () => {
+//   const cookieStore = cookies();
+//   const cookieInformation = cookieStore.get("ownerId");
+//   const ownerId = cookieInformation.value;
+//   try {
+//     const response = await fetch(`http://localhost:3001/portfolio/${ownerId}`, {
+//       next: { tags: ["company"] },
+//     });
     
-    if (!response.ok) {
-      throw new Error("Network response was not ok.");
-    }
-    return response.json();
-  } catch (error) {
-    console.error("Error fetching data:", error);
-    throw error;
-  }
-};
+//     if (!response.ok) {
+//       throw new Error("Network response was not ok.");
+//     }
+//     return response.json();
+//   } catch (error) {
+//     console.error("Error fetching data:", error);
+//     throw error;
+//   }
+// };
 
 const TableTabs = async () => {
   const names = await fetchPortfolioNames();

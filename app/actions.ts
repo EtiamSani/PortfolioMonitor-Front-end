@@ -1,10 +1,10 @@
 "use server";
 import { revalidatePath } from "next/cache";
+import { cookies } from "next/headers";
 
 export async function deleteCompany(companyId: any) {
   try {
     console.log("Trying to delete company with ID:", companyId);
-    // Envoie de la requête DELETE à l'API
     const response = await fetch(
       `http://localhost:3001/company/delete-company/${companyId}`,
       {
@@ -16,8 +16,6 @@ export async function deleteCompany(companyId: any) {
     );
 
     if (response.ok) {
-      // Actualiser l'affichage après suppression de l'entreprise
-      // onDeleteCompany(companyId);
       revalidatePath("/dashboard");
       console.log("cest suppp");
     } else {
@@ -25,7 +23,6 @@ export async function deleteCompany(companyId: any) {
     }
   } catch (error) {
     console.error(error);
-    // Gérer les erreurs ou afficher un message à l'utilisateur
   }
 }
 
@@ -49,8 +46,6 @@ export async function updateCompany(companyId: any, formData: any) {
     );
 
     if (response.ok) {
-      // Actualiser l'affichage après suppression de l'entreprise
-      // onDeleteCompany(companyId);
       revalidatePath("/dashboard");
       console.log("cest suppp");
     } else {
@@ -58,7 +53,6 @@ export async function updateCompany(companyId: any, formData: any) {
     }
   } catch (error) {
     console.error(error);
-    // Gérer les erreurs ou afficher un message à l'utilisateur
   }
 }
 
@@ -75,7 +69,6 @@ export async function addCompany(portfolioId: any, formData: any) {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          // Ajoutez d'autres en-têtes si nécessaire
         },
         cache: "no-store",
         body: JSON.stringify(formattedData),
@@ -89,49 +82,81 @@ export async function addCompany(portfolioId: any, formData: any) {
     revalidatePath("/my-portfolio");
     const data = await response.json();
     console.log("Company added:", data);
-    //   setSuccessMessage(true);
-    setTimeout(() => {
-      // setSuccessMessage(false);
-    }, 4000);
+
+    setTimeout(() => {}, 4000);
   } catch (error) {
     console.error("Error adding company:", error);
   }
 }
 
 export async function addNewShareToCompany(companyId: any, formData: any) {
-  console.log(formData)
+  console.log(formData);
+  // Vérification des champs numériques avant la conversion en entiers
+  const isNumeric = (value: any) => !isNaN(value) && isFinite(value);
+
   const formattedData = {
     ...formData,
-    numberOfStocks: parseInt(formData.numberOfStocks, 10),
-    newPru: parseInt(formData.newPru, 10),
+    numberOfStocks: isNumeric(formData.numberOfStocks)
+      ? parseInt(formData.numberOfStocks, 10)
+      : null,
+    newPru: isNumeric(formData.newPru) ? parseInt(formData.newPru, 10) : null,
   };
+
+  try {
+    await fetch(`http://localhost:3001/buy-company/${companyId}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formattedData),
+    });
+
+    revalidatePath("/dashboard");
+    revalidatePath("/my-portfolio");
+
+  } catch (error) {
+    console.error("Erreur lors de l'ajout des parts :", error);
+    if (error instanceof Error) {
+      console.error("Détails de l'erreur :", error.message);
+    }
+  }
+}
+
+export async function fetchPortfolioById(portfolioId: any) {
+
   try {
     const response = await fetch(
-      `http://localhost:3001/buy-company/${companyId}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          // Ajoutez d'autres en-têtes si nécessaire
-        },
-        cache: "no-store",
-        body: JSON.stringify(formattedData),
-      }
+      `http://localhost:3001/portfolio/get-portfolio/${portfolioId}`
     );
-    console.log(response, 'res')
 
     if (!response.ok) {
       throw new Error("Network response was not ok.");
     }
-    revalidatePath("/dashboard");
-    revalidatePath("/my-portfolio");
+    // revalidatePath("/dashboard");
+    
     const data = await response.json();
-    console.log("shares added:", data);
-    //   setSuccessMessage(true);
-    setTimeout(() => {
-      // setSuccessMessage(false);
-    }, 4000);
+
+    return data;
   } catch (error) {
-    console.error("Error adding shares:", error);
+    console.error("Error fetching data:", error);
+    throw error;
+  }
+}
+
+export async function fetchPortfolioNames() {
+  const cookieStore = cookies();
+  const cookieInformation = cookieStore.get("ownerId");
+  const ownerId = cookieInformation.value;
+
+  try {
+    const response = await fetch(`http://localhost:3001/portfolio/${ownerId}`);
+    if (!response.ok) {
+      throw new Error("Network response was not ok.");
+    }
+    revalidatePath("/dashboard");
+    return response.json();
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw error;
   }
 }

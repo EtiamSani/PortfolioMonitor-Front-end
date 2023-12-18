@@ -16,7 +16,7 @@ import { addNewShareToCompany } from "@/app/actions";
 
 const BuyNewSharesModal = ({ companyId }: any) => {
   const [formData, setFormData] = useState({
-    nature: "Achat",
+    nature: "",
     objective: "",
     message: "",
     numberOfStocks: "",
