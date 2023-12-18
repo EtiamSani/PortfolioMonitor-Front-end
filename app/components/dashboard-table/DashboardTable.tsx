@@ -15,6 +15,7 @@ import { GiReceiveMoney } from "react-icons/gi";
 import { BsBuildingFillGear } from "react-icons/bs";
 import { BsBuildingFillX } from "react-icons/bs";
 import { deleteCompany } from "@/app/actions";
+import UpdateCompanyButton from "./UpdateCompanyButton";
 
 const DashboardTable = ({ company }: any) => {
   return (
@@ -73,10 +74,7 @@ const DashboardTable = ({ company }: any) => {
                       <GiReceiveMoney className="text-xl mr-3" />
                       <div>Vente</div>
                     </Button>
-                    <Button className="bg-[#003F91] p-5 hover:bg-[#1B98E0]">
-                      <BsBuildingFillGear className="text-xl mr-3" />
-                      <div>Modifier</div>
-                    </Button>
+                    <UpdateCompanyButton companyId={companyId} />
                     <Button
                       className="bg-[#003F91] p-5 hover:bg-[#1B98E0] "
                       onClick={() => deleteCompany(companyId)}
