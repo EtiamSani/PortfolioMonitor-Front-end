@@ -213,3 +213,45 @@ export async function updatePortfolioData(portfolioId: any, formData: any) {
     }
   }
 }
+
+export async function removeShareFromCompany(companyId: any, formData: any) {
+
+  
+  // Vérification des champs numériques avant la conversion en entiers
+  const isNumeric = (value: any) => !isNaN(value) && isFinite(value);
+
+  const formattedData = {
+    ...formData,
+    numberOfStocks: isNumeric(formData.numberOfStocks)
+      ? parseFloat(formData.numberOfStocks.replace(',', '.'))
+      : null,
+    priceOfShare: isNumeric(formData.priceOfShare)
+      ? parseFloat(formData.priceOfShare.replace(',', '.'))
+      : null,
+  };
+
+
+  try {
+    const response = await fetch(`http://localhost:3001/sell-company/${companyId}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formattedData),
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to remove new shares"); 
+    }
+
+    revalidatePath("/dashboard");
+    revalidatePath("/my-portfolio");
+
+  } catch (error) {
+    console.error("Erreur lors de enlevement des parts :", error);
+    if (error instanceof Error) {
+      console.error("Détails de l'erreur :", error.message);
+      console.error("Détails supplémentaires :", error.stack);
+    }
+  }
+}
