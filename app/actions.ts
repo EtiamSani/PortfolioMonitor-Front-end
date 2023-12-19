@@ -175,3 +175,43 @@ export async function fetchPortfolioNames() {
     throw error;
   }
 }
+
+
+export async function updatePortfolioData(portfolioId: any, formData: any) {
+
+  
+  // Vérification des champs numériques avant la conversion en entiers
+  const isNumeric = (value: any) => !isNaN(value) && isFinite(value);
+
+  const formattedData = {
+    ...formData,
+    moneyInput: isNumeric(formData.moneyInput)
+      ? parseFloat(formData.moneyInput.replace(',', '.'))
+      : null,
+  };
+
+
+  try {
+    const response = await fetch(`http://localhost:3001/portfolio/update/${portfolioId}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formattedData),
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to add new shares"); 
+    }
+
+    revalidatePath("/dashboard");
+    revalidatePath("/my-portfolio");
+
+  } catch (error) {
+    console.error("Erreur lors de l'ajout des parts :", error);
+    if (error instanceof Error) {
+      console.error("Détails de l'erreur :", error.message);
+      console.error("Détails supplémentaires :", error.stack);
+    }
+  }
+}

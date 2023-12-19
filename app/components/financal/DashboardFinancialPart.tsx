@@ -2,7 +2,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { fetchPortfolioById } from "@/app/actions";
+import { fetchPortfolioById, updatePortfolioData } from "@/app/actions";
 import { useEffect, useState } from "react";
 
 const DashboardFinancialPart = ({ portfolioId }: any) => {
@@ -25,6 +25,26 @@ const DashboardFinancialPart = ({ portfolioId }: any) => {
     fetchData();
   }, [portfolioId]);
 
+  const [formData, setFormData] = useState({
+    moneyInput: "",
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { id, value } = e.target;
+    let updatedValue = value;
+
+    // Convertir les virgules en points ou vice versa
+    updatedValue = updatedValue.replace(",", ".");
+
+    // Gérer la saisie de l'utilisateur ici
+    // Assurez-vous de valider la saisie selon vos besoins
+
+    setFormData((prevData) => ({
+      ...prevData,
+      [id]: updatedValue,
+    }));
+  };
+
   return (
     <div className="flex gap-5 absolute top-0">
       <Card className="w-[260px] ml-[70px] mt-[50px] border-none bg-[#1B98E0]">
@@ -37,10 +57,6 @@ const DashboardFinancialPart = ({ portfolioId }: any) => {
             {portfolioData.liquidity} €
           </h2>
         </CardContent>
-        <div className="flex w-[200px] max-w-sm items-center space-x-2 mb-2 m-auto">
-          <Input type="text" placeholder="Liquidités" className="bg-white" />
-          <Button type="submit">Ajouter</Button>
-        </div>
       </Card>
 
       <Card className="w-[260px]  mt-[50px]  bg-[#FAFAFA]">
@@ -53,8 +69,17 @@ const DashboardFinancialPart = ({ portfolioId }: any) => {
           </h2>
         </CardContent>
         <div className="flex w-[200px] max-w-sm items-center space-x-2 mb-2 m-auto">
-          <Input type="text" placeholder="Liquidités" className="bg-white" />
-          <Button type="submit">Ajouter</Button>
+          <Input
+            id="moneyInput"
+            type="text"
+            placeholder="Nouvel apport"
+            className="bg-white"
+            value={formData.moneyInput}
+            onChange={handleChange}
+          />
+          <Button onClick={() => updatePortfolioData(portfolioId, formData)}>
+            Ajouter
+          </Button>
         </div>
       </Card>
 
