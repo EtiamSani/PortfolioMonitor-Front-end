@@ -179,8 +179,6 @@ export async function fetchPortfolioNames() {
 
 export async function updatePortfolioData(portfolioId: any, formData: any) {
 
-  
-  // Vérification des champs numériques avant la conversion en entiers
   const isNumeric = (value: any) => !isNaN(value) && isFinite(value);
 
   const formattedData = {
