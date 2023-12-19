@@ -15,12 +15,14 @@ import { Textarea } from "@/components/ui/textarea";
 import { addNewShareToCompany } from "@/app/actions";
 
 const BuyNewSharesModal = ({ companyId }: any) => {
+  console.log("idddddd", companyId);
   const [formData, setFormData] = useState({
     nature: "",
     objective: "",
     message: "",
     numberOfStocks: "",
     newPru: "",
+    priceOfShare: "",
     companyId: "",
   });
 
@@ -55,7 +57,7 @@ const BuyNewSharesModal = ({ companyId }: any) => {
           />
         </div>
         <div className="grid grid-cols-4 items-center gap-4">
-          <Label htmlFor="ticker" className="text-right">
+          <Label htmlFor="objective" className="text-right">
             Motivation
           </Label>
           <Input
@@ -67,7 +69,7 @@ const BuyNewSharesModal = ({ companyId }: any) => {
         </div>
 
         <div className="grid grid-cols-4 items-center gap-4">
-          <Label htmlFor="username" className="text-right">
+          <Label htmlFor="numberOfStocks" className="text-right">
             Nombre d'action acheter
           </Label>
           <Input
@@ -78,7 +80,18 @@ const BuyNewSharesModal = ({ companyId }: any) => {
           />
         </div>
         <div className="grid grid-cols-4 items-center gap-4">
-          <Label htmlFor="username" className="text-right">
+          <Label htmlFor="priceOfShare" className="text-right">
+            prix de l'action
+          </Label>
+          <Input
+            id="priceOfShare"
+            value={formData.priceOfShare}
+            onChange={handleChange}
+            className="col-span-3"
+          />
+        </div>
+        <div className="grid grid-cols-4 items-center gap-4">
+          <Label htmlFor="newPru" className="text-right">
             Nouveau PRU
           </Label>
           <Input
@@ -89,7 +102,7 @@ const BuyNewSharesModal = ({ companyId }: any) => {
           />
         </div>
         <div className="grid grid-cols-4 items-center gap-4">
-          <Label htmlFor="username" className="text-right">
+          <Label htmlFor="message" className="text-right">
             Message
           </Label>
           <Textarea

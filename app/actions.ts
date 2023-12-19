@@ -57,11 +57,13 @@ export async function updateCompany(companyId: any, formData: any) {
 }
 
 export async function addCompany(portfolioId: any, formData: any) {
+  console.log(formData);
   const formattedData = {
     ...formData,
     numberOfStocks: parseInt(formData.numberOfStocks, 10),
     pru: parseInt(formData.pru, 10),
   };
+  console.log(formattedData);
   try {
     const response = await fetch(
       `http://localhost:3001/company/${portfolioId}`,
@@ -90,7 +92,8 @@ export async function addCompany(portfolioId: any, formData: any) {
 }
 
 export async function addNewShareToCompany(companyId: any, formData: any) {
-  console.log(formData);
+  console.log(companyId, 'id dans action')
+  
   // Vérification des champs numériques avant la conversion en entiers
   const isNumeric = (value: any) => !isNaN(value) && isFinite(value);
 
@@ -99,17 +102,28 @@ export async function addNewShareToCompany(companyId: any, formData: any) {
     numberOfStocks: isNumeric(formData.numberOfStocks)
       ? parseInt(formData.numberOfStocks, 10)
       : null,
-    newPru: isNumeric(formData.newPru) ? parseInt(formData.newPru, 10) : null,
+    newPru: isNumeric(formData.newPru)
+      ? parseInt(formData.newPru, 10)
+      : null,
+    priceOfShare: isNumeric(formData.priceOfShare)
+      ? parseInt(formData.priceOfShare, 10)
+      : null,
   };
 
+  console.log(formattedData, 'foooooooooorùated')
+
   try {
-    await fetch(`http://localhost:3001/buy-company/${companyId}`, {
+    const response = await fetch(`http://localhost:3001/buy-company/${companyId}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(formattedData),
     });
+
+    if (!response.ok) {
+      throw new Error("Failed to add new shares"); 
+    }
 
     revalidatePath("/dashboard");
     revalidatePath("/my-portfolio");
@@ -118,6 +132,7 @@ export async function addNewShareToCompany(companyId: any, formData: any) {
     console.error("Erreur lors de l'ajout des parts :", error);
     if (error instanceof Error) {
       console.error("Détails de l'erreur :", error.message);
+      console.error("Détails supplémentaires :", error.stack);
     }
   }
 }
