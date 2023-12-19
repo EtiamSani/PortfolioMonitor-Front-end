@@ -30,9 +30,17 @@ const BuyNewSharesModal = ({ companyId }: any) => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
+    let updatedValue = value;
+
+    // Convertir les virgules en points ou vice versa
+    updatedValue = updatedValue.replace(",", ".");
+
+    // Gérer la saisie de l'utilisateur ici
+    // Assurez-vous de valider la saisie selon vos besoins
+
     setFormData((prevData) => ({
       ...prevData,
-      [id]: value,
+      [id]: updatedValue,
     }));
   };
 

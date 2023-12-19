@@ -100,13 +100,13 @@ export async function addNewShareToCompany(companyId: any, formData: any) {
   const formattedData = {
     ...formData,
     numberOfStocks: isNumeric(formData.numberOfStocks)
-      ? parseInt(formData.numberOfStocks, 10)
+      ? parseFloat(formData.numberOfStocks.replace(',', '.'))
       : null,
     newPru: isNumeric(formData.newPru)
-      ? parseInt(formData.newPru, 10)
+      ? parseFloat(formData.newPru.replace(',', '.'))
       : null,
     priceOfShare: isNumeric(formData.priceOfShare)
-      ? parseInt(formData.priceOfShare, 10)
+      ? parseFloat(formData.priceOfShare.replace(',', '.'))
       : null,
   };
 
