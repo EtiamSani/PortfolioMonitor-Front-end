@@ -54,6 +54,11 @@ const DashboardTable = ({ company }: any) => {
               gics,
               country,
               annualDividend,
+              marketValue,
+              gainOrLoss,
+              pvMvPercentage,
+              pruValue,
+              weight,
             } = company;
 
             return (

@@ -50,6 +50,11 @@ const PortfolioTable = ({ company }: any) => {
             stockCategory,
             gics,
             country,
+            marketValue,
+            gainOrLoss,
+            pvMvPercentage,
+            pruValue,
+            weight,
             annualDividend,
           } = company;
 
@@ -63,6 +68,11 @@ const PortfolioTable = ({ company }: any) => {
               <TableCell>{per}</TableCell>
               <TableCell>{numberOfStocks}</TableCell>
               <TableCell>{pru}</TableCell>
+              <TableCell>{marketValue} €</TableCell>
+              <TableCell>{pruValue} €</TableCell>
+              <TableCell>{gainOrLoss} €</TableCell>
+              <TableCell>{pvMvPercentage}%</TableCell>
+              <TableCell>{pru}%</TableCell>
             </TableRow>
           );
         })}

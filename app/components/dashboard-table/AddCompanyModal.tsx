@@ -24,6 +24,11 @@ const AddCompanyModal = ({ portfolioId }: any) => {
     numberOfStocks: 0,
     pru: 0,
     stockCategory: "",
+    currentStockPrice: 0,
+    pruValue: 0,
+    marketValue: 0,
+    gainOrLoss: 0,
+    pvMvPercentage: 0,
     country: "",
     gics: "",
   });
