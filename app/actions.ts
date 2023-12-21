@@ -60,8 +60,8 @@ export async function addCompany(portfolioId: any, formData: any) {
   console.log(formData);
   const formattedData = {
     ...formData,
-    numberOfStocks: parseInt(formData.numberOfStocks, 10),
-    pru: parseInt(formData.pru, 10),
+    numberOfStocks: parseFloat(formData.numberOfStocks.replace(',','.')),
+    pru: parseFloat(formData.pru.replace(',','.')),
   };
   console.log(formattedData);
   try {
@@ -258,7 +258,6 @@ export async function removeShareFromCompany(companyId: any, formData: any) {
 
 
 export async function fetchPortfolioValue(portfolioId:any) {
-  console.log(portfolioId, 'pf id pv')
 
   try {
     const response = await fetch(`http://localhost:3001/portfolio/get-portfolio/market-value/${portfolioId}`, {
@@ -270,7 +269,46 @@ export async function fetchPortfolioValue(portfolioId:any) {
       throw new Error("Network response was not ok.");
     }
     const data = await response.json()
-    console.log(data, 'la reponse ')
+    // revalidatePath("/dashboard");
+    return data
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw error;
+  }
+}
+
+export async function fetchBoughtShares() {
+
+  try {
+    const response = await fetch(`http://localhost:3001/shares-transactions/buy`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      }});
+    if (!response.ok) {
+      throw new Error("Network response was not ok.");
+    }
+    const data = await response.json()
+    // revalidatePath("/dashboard");
+    return data
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw error;
+  }
+}
+
+export async function fetchSoldShares() {
+
+  try {
+    const response = await fetch(`http://localhost:3001/shares-transactions/sell`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      }});
+    if (!response.ok) {
+      throw new Error("Network response was not ok.");
+    }
+    const data = await response.json()
     // revalidatePath("/dashboard");
     return data
   } catch (error) {

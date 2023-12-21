@@ -22,7 +22,6 @@ const PortfolioTable = ({ company }: any) => {
           <TableHead className="text-[#003F91]">Devise</TableHead>
           <TableHead className="text-[#003F91]">Catégories</TableHead>
           <TableHead className="text-[#003F91]">Capitalisation</TableHead>
-          <TableHead className="text-[#003F91]">PER</TableHead>
           <TableHead className="text-[#003F91]">Nb de parts</TableHead>
           <TableHead className="text-[#003F91]">PRU</TableHead>
           <TableHead className="text-[#003F91]">prix de marché</TableHead>
@@ -68,18 +67,19 @@ const PortfolioTable = ({ company }: any) => {
               <TableCell className="text-[#003F91]">{currency}</TableCell>
               <TableCell className="text-[#003F91]">{stockCategory}</TableCell>
               <TableCell className="text-[#003F91]">{capitalisation}</TableCell>
-              <TableCell className="text-[#003F91]">{per}</TableCell>
+
               <TableCell className="text-[#003F91]">{numberOfStocks}</TableCell>
               <TableCell className="text-[#003F91]">{pru} €</TableCell>
               <TableCell className="text-[#003F91]">
                 {currentStockPrice} €
               </TableCell>
               <TableCell className="text-[#003F91]">{pruValue} €</TableCell>
+              <TableCell className="text-[#003F91]">{marketValue} €</TableCell>
               <TableCell className="text-[#003F91]">{gainOrLoss} €</TableCell>
               <TableCell className="text-[#003F91]">
                 {pvMvPercentage}%
               </TableCell>
-              <TableCell className="text-[#003F91]">{pru}%</TableCell>
+              <TableCell className="text-[#003F91]">%</TableCell>
             </TableRow>
           );
         })}

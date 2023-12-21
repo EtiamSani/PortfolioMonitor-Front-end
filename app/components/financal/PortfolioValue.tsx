@@ -2,7 +2,7 @@
 import { fetchPortfolioValue } from "@/app/actions";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import React, { useEffect, useState } from "react";
-import { GiGoldNuggets } from "react-icons/gi";
+import { IoDiamondOutline } from "react-icons/io5";
 
 const PortfolioValue = ({
   portfolioId,
@@ -37,13 +37,13 @@ const PortfolioValue = ({
       <CardHeader>
         <div className="flex items-center">
           <CardTitle className="text-white">Valeur du portefeuille</CardTitle>
-          <GiGoldNuggets className="text-white text-2xl ml-2 " />
+          <IoDiamondOutline className="text-white text-2xl ml-2 " />
         </div>
       </CardHeader>
       <CardContent>
-        <div className="mr-3 mb-5">
+        <div className="mr-3 mb-5 text-left">
           <h2 className="text-4xl font-bold text-white">{portfolioValue} €</h2>
-          <h2 className=" font-bold text-white text-right mr-10">
+          <h2 className=" font-bold text-white text-left">
             {PourcentPortfolioValue} %
           </h2>
         </div>

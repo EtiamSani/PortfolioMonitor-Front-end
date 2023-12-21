@@ -7,6 +7,7 @@ import { fetchPortfolioNames } from "@/app/actions";
 import PortfolioValue from "../financal/PortfolioValue";
 import FinancalPart from "../financal/FinancalPart";
 import LastsTransactions from "../financal/LastsTransactions";
+import DividendsTable from "../dividends/DividendsTable";
 
 const TableTabs = async () => {
   const names = await fetchPortfolioNames();
@@ -61,6 +62,7 @@ const TableTabs = async () => {
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-2"></CardContent>
+              <DividendsTable company={name.PortfolioCompany} />
             </Card>
           </TabsContent>
         ))}
