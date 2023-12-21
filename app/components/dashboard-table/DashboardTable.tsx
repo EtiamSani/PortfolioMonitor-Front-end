@@ -20,6 +20,7 @@ import BuyNewSharesButton from "./BuyNewSharesButton";
 import SellSharesButton from "./SellSharesButton";
 
 const DashboardTable = ({ company }: any) => {
+  let totalMarketValue = 0;
   return (
     <div className="m-auto">
       <Table className="w-[1200px] mt-[30px] ">
@@ -61,6 +62,7 @@ const DashboardTable = ({ company }: any) => {
               weight,
             } = company;
 
+            totalMarketValue += marketValue;
             return (
               <TableRow key={id}>
                 <TableCell className="font-medium">{name}</TableCell>
@@ -70,6 +72,8 @@ const DashboardTable = ({ company }: any) => {
                 <TableCell>{capitalisation}</TableCell>
                 <TableCell>{numberOfStocks}</TableCell>
                 <TableCell>{pru}</TableCell>
+                <TableCell>{marketValue}</TableCell>
+
                 <TableCell>
                   <div className="flex gap-2">
                     <BuyNewSharesButton companyId={companyId} />
@@ -91,7 +95,7 @@ const DashboardTable = ({ company }: any) => {
         <TableFooter>
           <TableRow>
             <TableCell colSpan={3}>Total</TableCell>
-            <TableCell>$2,500.00</TableCell>
+            <TableCell>{totalMarketValue}</TableCell>
           </TableRow>
         </TableFooter>
       </Table>

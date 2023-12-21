@@ -5,26 +5,22 @@ import { Input } from "@/components/ui/input";
 import { fetchPortfolioById, updatePortfolioData } from "@/app/actions";
 import { useEffect, useState } from "react";
 
-const DashboardFinancialPart = ({ portfolioId }: any) => {
-  // const portfolioData = await fetchPortfolioById(
-  //   "02d36371-a310-43fc-9ca8-b83d8f54f113"
-  // );
+const DashboardFinancialPart = ({ portfolioId, financeData }: any) => {
+  // const [portfolioData, setPortfolioData] = useState<any>({});
 
-  const [portfolioData, setPortfolioData] = useState<any>({});
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const data = await fetchPortfolioById(portfolioId);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await fetchPortfolioById(portfolioId);
-        setPortfolioData(data);
-      } catch (error) {
-        console.error("Error fetching portfolio data:", error);
-      }
-    };
+  //       setPortfolioData(data);
+  //     } catch (error) {
+  //       console.error("Error fetching portfolio data:", error);
+  //     }
+  //   };
 
-    fetchData();
-  }, [portfolioId]);
-
+  //   fetchData();
+  // }, [portfolioId]);
   const [formData, setFormData] = useState({
     moneyInput: "",
   });
@@ -46,7 +42,7 @@ const DashboardFinancialPart = ({ portfolioId }: any) => {
   };
 
   return (
-    <div className="flex gap-5 absolute top-0">
+    <div className="flex gap-5 ">
       <Card className="w-[260px] ml-[70px] mt-[50px] border-none bg-[#1B98E0]">
         {" "}
         <CardHeader>
@@ -54,7 +50,7 @@ const DashboardFinancialPart = ({ portfolioId }: any) => {
         </CardHeader>
         <CardContent>
           <h2 className="text-4xl font-bold text-[#FAFAFA]">
-            {portfolioData.liquidity} €
+            {financeData.liquidity} €
           </h2>
         </CardContent>
       </Card>
@@ -65,7 +61,7 @@ const DashboardFinancialPart = ({ portfolioId }: any) => {
         </CardHeader>
         <CardContent>
           <h2 className="text-4xl font-bold text-[#1B98E0]">
-            {portfolioData.moneyInput} €
+            {financeData.moneyInput} €
           </h2>
         </CardContent>
         <div className="flex w-[200px] max-w-sm items-center space-x-2 mb-2 m-auto">
@@ -81,33 +77,6 @@ const DashboardFinancialPart = ({ portfolioId }: any) => {
             Ajouter
           </Button>
         </div>
-      </Card>
-
-      <Card className="w-[260px]  mt-[50px] bg-[#003F91]">
-        <CardHeader>
-          <CardTitle className="text-white">Valeur du portefeuille</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="mr-3 mb-5">
-            <h2 className="text-4xl font-bold text-[#E5F4E3]">
-              {" "}
-              {portfolioData.portfolioValue} €
-            </h2>
-          </div>
-        </CardContent>
-      </Card>
-
-      <Card className="w-[260px]  mt-[50px] bg-[#003F91]">
-        <CardHeader>
-          <CardTitle className="text-white">PV/MV</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="mr-3 mb-5">
-            <h2 className="text-4xl font-bold text-[#E5F4E3]">
-              {portfolioData.gainOrLost} %
-            </h2>
-          </div>
-        </CardContent>
       </Card>
     </div>
   );

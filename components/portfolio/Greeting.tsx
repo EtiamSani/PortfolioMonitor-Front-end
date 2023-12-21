@@ -12,9 +12,9 @@ const Greeting = () => {
     }
   }
   return (
-    <div>
-      <h1 className="ml-[400px] text-4xl mt-10 text-slate-600">
-        <span className="font-bold text-slate-600">
+    <div className="bg-white  ">
+      <h1 className="ml-[259px] text-2xl p-2 text-[#003F91] border-b">
+        <span className="font-bold text-[#003F91]">
           👋 Bonjour <span className="text-[#003F91]">{ownerName}</span>,
         </span>{" "}
         Re-bienvenue

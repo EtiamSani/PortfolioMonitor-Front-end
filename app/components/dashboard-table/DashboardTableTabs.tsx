@@ -8,6 +8,7 @@ import Buttons from "./AddCompanyButton";
 import DashboardFinancialPart from "../financal/DashboardFinancialPart";
 import { useState } from "react";
 import { fetchPortfolioNames } from "@/app/actions";
+import PortfolioValue from "../financal/PortfolioValue";
 
 // const fetchPortfolioNames = async () => {
 //   const cookieStore = cookies();
@@ -36,7 +37,7 @@ const DashboardTableTabs = async () => {
       defaultValue={firstPortfolioName}
       className="w-[1290px] ml-[424px] mt-[320px]"
     >
-      <TabsList className={`grid w-full lg:grid-cols-${numCols}`}>
+      <TabsList className={`grid w-full lg:grid-cols-${numCols} w-[290px]`}>
         {names.map((name) => (
           <TabsTrigger key={name.id} value={name.name}>
             {name.name}
@@ -45,7 +46,13 @@ const DashboardTableTabs = async () => {
       </TabsList>
       {names.map((name) => (
         <TabsContent key={name.id} value={name.name}>
-          <DashboardFinancialPart portfolioId={name.id} />
+          <div className="absolute top-0 flex">
+            <DashboardFinancialPart portfolioId={name.id} financeData={name} />
+            <PortfolioValue
+              portfolioId={name.id}
+              moneyInput={name.moneyInput}
+            />
+          </div>
           <Card>
             <Buttons portfolioId={name.id} />
             <CardHeader>
@@ -61,7 +68,6 @@ const DashboardTableTabs = async () => {
                 name={name.name}
                 company={name.PortfolioCompany}
               />
-              <div>{name.liquidity}</div>
             </CardContent>
           </Card>
         </TabsContent>

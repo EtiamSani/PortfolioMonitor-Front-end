@@ -1,48 +1,35 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { GiMoneyStack, GiTwoCoins } from "react-icons/gi";
 
-const FinancalPart = () => {
+const FinancalPart = ({ financeData }: any) => {
   return (
-    <div className="flex gap-5">
-      <Card className="w-[260px] ml-[400px] mt-[50px] border-none bg-[#1B98E0]">
+    <div className="flex gap-5 ">
+      <Card className="w-[260px] mt-[50px] border border-[#003F91] bg-white">
         {" "}
         <CardHeader>
-          <CardTitle className="text-[#FAFAFA]">Liquidités</CardTitle>
+          <div className="flex items-center">
+            <CardTitle className="text-[#003F91]">Liquidités</CardTitle>
+            <GiTwoCoins className="text-[#003F91] text-2xl ml-2 " />
+          </div>
         </CardHeader>
         <CardContent>
-          <h2 className="text-4xl font-bold text-[#FAFAFA]">1.000.000€</h2>
+          <h2 className="text-4xl font-bold text-[#003F91]">
+            {financeData.liquidity} €
+          </h2>
         </CardContent>
       </Card>
 
-      <Card className="w-[300px]  mt-[50px]  bg-[#FAFAFA]">
+      <Card className="w-[260px]  mt-[50px]  border border-[#003F91]">
         <CardHeader>
-          <CardTitle className="text-[#1B98E0]">Total apports</CardTitle>
+          <div className="flex items-center">
+            <CardTitle className="text-[#003F91]">Total apports</CardTitle>
+            <GiMoneyStack className="text-[#003F91] text-2xl ml-2 " />
+          </div>
         </CardHeader>
         <CardContent>
-          <div className="mr-3 mb-5">
-            <h2 className="text-4xl font-bold text-[#1B98E0]">1.000.000€</h2>
-          </div>
-        </CardContent>
-      </Card>
-
-      <Card className="w-[300px]  mt-[50px] bg-[#003F91]">
-        <CardHeader>
-          <CardTitle className="text-white">Valeur du portefeuille</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="mr-3 mb-5">
-            <h2 className="text-4xl font-bold text-[#E5F4E3]">1.000.000€</h2>
-          </div>
-        </CardContent>
-      </Card>
-
-      <Card className="w-[300px]  mt-[50px] bg-[#003F91]">
-        <CardHeader>
-          <CardTitle className="text-white">PV/MV</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="mr-3 mb-5">
-            <h2 className="text-4xl font-bold text-[#E5F4E3]">1.000.000€</h2>
-          </div>
+          <h2 className="text-4xl font-bold text-[#003F91]">
+            {financeData.moneyInput} €
+          </h2>
         </CardContent>
       </Card>
     </div>

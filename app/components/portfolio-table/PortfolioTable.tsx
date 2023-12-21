@@ -17,19 +17,20 @@ const PortfolioTable = ({ company }: any) => {
       <TableCaption>A list of your recent invoices.</TableCaption>
       <TableHeader>
         <TableRow>
-          <TableHead className="w-[100px]">Nom</TableHead>
-          <TableHead>Pays</TableHead>
-          <TableHead>Devise</TableHead>
-          <TableHead>Catégories</TableHead>
-          <TableHead>Capitalisation</TableHead>
-          <TableHead>PER</TableHead>
-          <TableHead>Nb de parts</TableHead>
-          <TableHead>PRU</TableHead>
-          <TableHead>prix de marché</TableHead>
-          <TableHead>Valeur PRU</TableHead>
-          <TableHead>Gain/Perte</TableHead>
-          <TableHead>PV/MV</TableHead>
-          <TableHead>Poids</TableHead>
+          <TableHead className="text-[#003F91]">Nom</TableHead>
+          <TableHead className="text-[#003F91]">Pays</TableHead>
+          <TableHead className="text-[#003F91]">Devise</TableHead>
+          <TableHead className="text-[#003F91]">Catégories</TableHead>
+          <TableHead className="text-[#003F91]">Capitalisation</TableHead>
+          <TableHead className="text-[#003F91]">PER</TableHead>
+          <TableHead className="text-[#003F91]">Nb de parts</TableHead>
+          <TableHead className="text-[#003F91]">PRU</TableHead>
+          <TableHead className="text-[#003F91]">prix de marché</TableHead>
+          <TableHead className="text-[#003F91]">Valeur PRU</TableHead>
+          <TableHead className="text-[#003F91]">Valeur Marché</TableHead>
+          <TableHead className="text-[#003F91]">Gain/Perte</TableHead>
+          <TableHead className="text-[#003F91]">PV/MV</TableHead>
+          <TableHead className="text-[#003F91]">Poids</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -43,7 +44,7 @@ const PortfolioTable = ({ company }: any) => {
             capitalisation,
             per,
             low52,
-            high52,
+            currentStockPrice,
             volume,
             numberOfStocks,
             pru,
@@ -60,29 +61,29 @@ const PortfolioTable = ({ company }: any) => {
 
           return (
             <TableRow key={id}>
-              <TableCell className="font-medium">{name}</TableCell>
-              <TableCell>{country}</TableCell>
-              <TableCell>{currency}</TableCell>
-              <TableCell>{stockCategory}</TableCell>
-              <TableCell>{capitalisation}</TableCell>
-              <TableCell>{per}</TableCell>
-              <TableCell>{numberOfStocks}</TableCell>
-              <TableCell>{pru}</TableCell>
-              <TableCell>{marketValue} €</TableCell>
-              <TableCell>{pruValue} €</TableCell>
-              <TableCell>{gainOrLoss} €</TableCell>
-              <TableCell>{pvMvPercentage}%</TableCell>
-              <TableCell>{pru}%</TableCell>
+              <TableCell className="font-medium text-[#003F91]">
+                {name}
+              </TableCell>
+              <TableCell className="text-[#003F91]">{country}</TableCell>
+              <TableCell className="text-[#003F91]">{currency}</TableCell>
+              <TableCell className="text-[#003F91]">{stockCategory}</TableCell>
+              <TableCell className="text-[#003F91]">{capitalisation}</TableCell>
+              <TableCell className="text-[#003F91]">{per}</TableCell>
+              <TableCell className="text-[#003F91]">{numberOfStocks}</TableCell>
+              <TableCell className="text-[#003F91]">{pru} €</TableCell>
+              <TableCell className="text-[#003F91]">
+                {currentStockPrice} €
+              </TableCell>
+              <TableCell className="text-[#003F91]">{pruValue} €</TableCell>
+              <TableCell className="text-[#003F91]">{gainOrLoss} €</TableCell>
+              <TableCell className="text-[#003F91]">
+                {pvMvPercentage}%
+              </TableCell>
+              <TableCell className="text-[#003F91]">{pru}%</TableCell>
             </TableRow>
           );
         })}
       </TableBody>
-      <TableFooter>
-        <TableRow>
-          <TableCell colSpan={3}>Total</TableCell>
-          <TableCell>$2,500.00</TableCell>
-        </TableRow>
-      </TableFooter>
     </Table>
   );
 };
