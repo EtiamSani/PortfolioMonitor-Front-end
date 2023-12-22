@@ -9,9 +9,10 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { fetchPortfolioValue } from "@/app/actions";
 
-
-const PortfolioTable = ({ company }: any) => {
+const PortfolioTable = async ({ company, portfolioId }: any) => {
+  const portfolioValue = await fetchPortfolioValue(portfolioId);
   return (
     <Table>
       <TableCaption>A list of your recent invoices.</TableCaption>
@@ -79,7 +80,9 @@ const PortfolioTable = ({ company }: any) => {
               <TableCell className="text-[#003F91]">
                 {pvMvPercentage}%
               </TableCell>
-              <TableCell className="text-[#003F91]">%</TableCell>
+              <TableCell className="text-[#003F91]">
+                {(marketValue / portfolioValue) * 100}%
+              </TableCell>
             </TableRow>
           );
         })}

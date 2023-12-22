@@ -50,7 +50,10 @@ const TableTabs = async () => {
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-2">
-                <PortfolioTable company={name.PortfolioCompany} />
+                <PortfolioTable
+                  company={name.PortfolioCompany}
+                  portfolioId={name.id}
+                />
               </CardContent>
 
               <CardHeader>
