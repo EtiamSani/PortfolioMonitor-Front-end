@@ -15,7 +15,9 @@ const PortfolioTable = async ({ company, portfolioId }: any) => {
   const portfolioValue = await fetchPortfolioValue(portfolioId);
   return (
     <Table>
-      <TableCaption>A list of your recent invoices.</TableCaption>
+      <TableCaption>
+        Les données sont actualisé tout les jours après clôture à 23h00
+      </TableCaption>
       <TableHeader>
         <TableRow>
           <TableHead className="text-[#003F91]">Nom</TableHead>

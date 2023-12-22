@@ -96,31 +96,41 @@ const TableTabs = async () => {
                     />
                   </div>
                   <div className="w-[600px] h-[600px]">
-                    <h2>Allocation sectorielle (GICS)</h2>
+                    <h2 className="text-md text-[#003F91] text-center mb-3 font-semibold">
+                      Allocation sectorielle (GICS)
+                    </h2>
                     <PortfolioSectorialAllocationPieChart
                       company={name.PortfolioCompany}
                     />
                   </div>
                   <div className="w-[600px] h-[600px]">
-                    <h2>Allocation géographique</h2>
+                    <h2 className="text-md text-[#003F91] text-center mb-3 font-semibold">
+                      Allocation géographique
+                    </h2>
                     <PortfolioGeographicalAllocation
                       company={name.PortfolioCompany}
                     />
                   </div>
                   <div className="w-[600px] h-[600px]">
-                    <h2>Allocation par taille d'entreprise</h2>
+                    <h2 className="text-md text-[#003F91] text-center mb-3 font-semibold">
+                      Allocation par taille d'entreprise
+                    </h2>
                     <PortfolioCapitalizationAllocation
                       company={name.PortfolioCompany}
                     />
                   </div>
                   <div className="w-[600px] h-[600px]">
-                    <h2>Allocation par devise</h2>
+                    <h2 className="text-md text-[#003F91] text-center mb-3 font-semibold">
+                      Allocation par devise
+                    </h2>
                     <PortfolioCurrencyAllocation
                       company={name.PortfolioCompany}
                     />
                   </div>
                   <div className="w-[600px] h-[600px]">
-                    <h2>Allocation a la P.Lynch</h2>
+                    <h2 className="text-md text-[#003F91] text-center mb-3 font-semibold">
+                      Allocation a la P.Lynch
+                    </h2>
                     <PortfolioPeterLynchAllocation
                       company={name.PortfolioCompany}
                     />
