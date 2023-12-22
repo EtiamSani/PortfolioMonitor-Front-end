@@ -1,5 +1,5 @@
 "use server";
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
 
 export async function deleteCompany(companyId: any) {
@@ -262,6 +262,7 @@ export async function fetchPortfolioValue(portfolioId:any) {
   try {
     const response = await fetch(`http://localhost:3001/portfolio/get-portfolio/market-value/${portfolioId}`, {
       method: "GET",
+      cache: 'no-store',
       headers: {
         "Content-Type": "application/json",
       }});
@@ -269,7 +270,6 @@ export async function fetchPortfolioValue(portfolioId:any) {
       throw new Error("Network response was not ok.");
     }
     const data = await response.json()
-    // revalidatePath("/dashboard");
     return data
   } catch (error) {
     console.error("Error fetching data:", error);
