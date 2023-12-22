@@ -277,6 +277,26 @@ export async function fetchPortfolioValue(portfolioId:any) {
   }
 }
 
+export async function fetchPortfolioTotalGainOrLost(portfolioId:any) {
+
+  try {
+    const response = await fetch(`http://localhost:3001/portfolio/get-portfolio/total-gain-or-lost/${portfolioId}`, {
+      method: "GET",
+      cache: 'no-store',
+      headers: {
+        "Content-Type": "application/json",
+      }});
+    if (!response.ok) {
+      throw new Error("Network response was not ok.");
+    }
+    const data = await response.json()
+    return data
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw error;
+  }
+}
+
 export async function fetchBoughtShares() {
 
   try {

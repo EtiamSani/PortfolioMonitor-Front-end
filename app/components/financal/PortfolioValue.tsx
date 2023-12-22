@@ -1,5 +1,8 @@
 "use client";
-import { fetchPortfolioValue } from "@/app/actions";
+import {
+  fetchPortfolioTotalGainOrLost,
+  fetchPortfolioValue,
+} from "@/app/actions";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import React, { useEffect, useState } from "react";
 import { IoDiamondOutline } from "react-icons/io5";
@@ -12,12 +15,19 @@ const PortfolioValue = ({
   moneyInput: any;
 }) => {
   const [portfolioValue, setPortfolioValue] = useState<number | null>(null);
+  const [portfolioTotalGainOrLost, setPortfolioTotalGainOrLost] = useState<
+    number | null
+  >(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetchPortfolioValue(portfolioId);
         setPortfolioValue(response);
+        const gainOrLostResponse = await fetchPortfolioTotalGainOrLost(
+          portfolioId
+        );
+        setPortfolioTotalGainOrLost(gainOrLostResponse);
       } catch (error) {
         console.error("Erreur:", error);
         setPortfolioValue(null);
@@ -44,7 +54,10 @@ const PortfolioValue = ({
         <div className="mr-3 mb-5 text-left">
           <h2 className="text-4xl font-bold text-white">{portfolioValue} €</h2>
           <h2 className=" font-bold text-white text-left">
-            {PourcentPortfolioValue} %
+            <div className="flex">
+              <div className="mr-4">{portfolioTotalGainOrLost} €</div>
+              <div>{PourcentPortfolioValue} %</div>
+            </div>
           </h2>
         </div>
       </CardContent>
