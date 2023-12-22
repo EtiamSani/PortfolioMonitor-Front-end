@@ -8,6 +8,7 @@ import PortfolioValue from "../financal/PortfolioValue";
 import FinancalPart from "../financal/FinancalPart";
 import LastsTransactions from "../financal/LastsTransactions";
 import DividendsTable from "../dividends/DividendsTable";
+import PortfolioPositionPieChart from "../portfolio-graphics/PortfolioPositionPieChart";
 
 const TableTabs = async () => {
   const names = await fetchPortfolioNames();
@@ -40,7 +41,7 @@ const TableTabs = async () => {
               />
               <LastsTransactions />
             </div>
-            <Card className="border border-[#003F91]">
+            <Card className="border border-[#003F91] mb-5">
               <CardHeader>
                 <CardTitle>
                   <div className="flex text-[#003F91] text-xl items-center">
@@ -64,8 +65,25 @@ const TableTabs = async () => {
                   </div>
                 </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-2"></CardContent>
-              <DividendsTable company={name.PortfolioCompany} />
+              <CardContent className="space-y-2">
+                <DividendsTable company={name.PortfolioCompany} />
+              </CardContent>
+            </Card>
+
+            <Card className="border border-[#003F91]">
+              <CardHeader>
+                <CardTitle>
+                  <div className="flex text-[#003F91] text-xl items-center">
+                    <FaWallet className="mr-2" />
+                    Graphiques
+                  </div>
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-2">
+                <div className="w-[600px] h-[600px]">
+                  <PortfolioPositionPieChart company={name.PortfolioCompany} />
+                </div>
+              </CardContent>
             </Card>
           </TabsContent>
         ))}
