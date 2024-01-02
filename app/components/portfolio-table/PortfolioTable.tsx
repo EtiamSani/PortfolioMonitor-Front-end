@@ -90,12 +90,14 @@ const PortfolioTable = async ({ company, portfolioId }: any) => {
               </TableCell>
               <TableCell className="text-[#003F91]">{pruValue} €</TableCell>
               <TableCell className="text-[#003F91]">{marketValue} €</TableCell>
-              <TableCell className="text-[#003F91]">{gainOrLoss} €</TableCell>
+              <TableCell className="text-[#003F91]">
+                {gainOrLoss.toFixed(2)} €
+              </TableCell>
               <TableCell className="text-[#003F91]">
                 {pvMvPercentage}%
               </TableCell>
               <TableCell className="text-[#003F91]">
-                {(marketValue / portfolioValue) * 100}%
+                {((marketValue / portfolioValue) * 100).toFixed(2)}%
               </TableCell>
             </TableRow>
           );

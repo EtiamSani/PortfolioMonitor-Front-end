@@ -32,7 +32,7 @@ const AddCompanyModal = ({ portfolioId }: any) => {
     pvMvPercentage: 0,
     country: "",
     gics: "",
-    annualDividends: 0,
+    annualDividends: "",
     dividendsReceived: 0,
   });
 
@@ -161,6 +161,17 @@ const AddCompanyModal = ({ portfolioId }: any) => {
           <Input
             id="type"
             value={formData.type}
+            onChange={handleChange}
+            className="col-span-3"
+          />
+        </div>
+        <div className="grid grid-cols-4 items-center gap-4">
+          <Label htmlFor="dividendsReceived" className="text-right">
+            Dividendes annuels
+          </Label>
+          <Input
+            id="type"
+            value={formData.dividendsReceived}
             onChange={handleChange}
             className="col-span-3"
           />

@@ -18,6 +18,7 @@ import { deleteCompany } from "@/app/actions";
 import UpdateCompanyButton from "./UpdateCompanyButton";
 import BuyNewSharesButton from "./BuyNewSharesButton";
 import SellSharesButton from "./SellSharesButton";
+import AddDividendsButton from "./AddDividendsButton";
 
 const DashboardTable = ({ company }: any) => {
   let totalMarketValue = 0;
@@ -79,6 +80,7 @@ const DashboardTable = ({ company }: any) => {
                     <BuyNewSharesButton companyId={companyId} />
                     <SellSharesButton companyId={companyId} />
                     <UpdateCompanyButton companyId={companyId} />
+                    <AddDividendsButton companyId={companyId} />
                     <Button
                       className="bg-[#003F91] p-5 hover:bg-[#1B98E0] "
                       onClick={() => deleteCompany(companyId)}

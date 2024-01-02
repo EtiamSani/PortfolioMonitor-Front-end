@@ -336,3 +336,35 @@ export async function fetchSoldShares() {
     throw error;
   }
 }
+
+export async function updateDividendsReceived(companyId: any, formData: any) {
+  const isNumeric = (value: any) => !isNaN(value) && isFinite(value);
+
+  const formattedData = {
+    ...formData,
+    dividendsReceived: isNumeric(formData.dividendsReceived)
+      ? parseFloat(formData.dividendsReceived.replace(',', '.'))
+      : null
+  };
+
+  try {
+    const response = await fetch(
+      `http://localhost:3001/company/update-company/dividends/${companyId}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formattedData),
+      }
+    );
+
+    if (response.ok) {
+      revalidatePath("/dashboard");
+    } else {
+      throw new Error("Erreur lors de la suppression de l'entreprise");
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}

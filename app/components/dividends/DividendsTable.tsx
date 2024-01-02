@@ -61,17 +61,16 @@ const DividendsTable = ({ company }: any) => {
               <TableCell className="text-[#003F91]">
                 {dividendsReceived}
               </TableCell>
-              <TableCell className="text-[#003F91]"></TableCell>
-              <TableCell className="text-[#003F91]"></TableCell>
+              <TableCell className="text-[#003F91]">
+                {((annualDividends / currentStockPrice) * 100).toFixed(2)}%
+              </TableCell>
+              <TableCell className="text-[#003F91]">
+                {((annualDividends / pru) * 100).toFixed(2)}%
+              </TableCell>
 
-              <TableCell className="text-[#003F91]"></TableCell>
-              <TableCell className="text-[#003F91]"></TableCell>
-              <TableCell className="text-[#003F91]"></TableCell>
-              <TableCell className="text-[#003F91]"></TableCell>
-              <TableCell className="text-[#003F91]"></TableCell>
-              <TableCell className="text-[#003F91]"></TableCell>
-              <TableCell className="text-[#003F91]"></TableCell>
-              <TableCell className="text-[#003F91]">%</TableCell>
+              <TableCell className="text-[#003F91]">
+                {(numberOfStocks * annualDividends).toFixed(2)} €
+              </TableCell>
             </TableRow>
           );
         })}
