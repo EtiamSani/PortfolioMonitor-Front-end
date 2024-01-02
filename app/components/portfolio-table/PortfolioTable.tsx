@@ -10,6 +10,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { fetchPortfolioValue } from "@/app/actions";
+import Image from "next/image";
 
 const PortfolioTable = async ({ company, portfolioId }: any) => {
   const portfolioValue = await fetchPortfolioValue(portfolioId);
@@ -20,6 +21,7 @@ const PortfolioTable = async ({ company, portfolioId }: any) => {
       </TableCaption>
       <TableHeader>
         <TableRow>
+          <TableHead className="text-[#003F91]"></TableHead>
           <TableHead className="text-[#003F91]">Nom</TableHead>
           <TableHead className="text-[#003F91]">Pays</TableHead>
           <TableHead className="text-[#003F91]">Devise</TableHead>
@@ -59,10 +61,20 @@ const PortfolioTable = async ({ company, portfolioId }: any) => {
             pruValue,
             weight,
             annualDividend,
+            logo,
           } = company;
 
           return (
             <TableRow key={id}>
+              <TableCell className="font-medium text-[#003F91]">
+                <Image
+                  src={"http://localhost:3001" + logo}
+                  alt={"company logo"}
+                  width={50}
+                  height={50}
+                  className="rounded-full"
+                />
+              </TableCell>
               <TableCell className="font-medium text-[#003F91]">
                 {name}
               </TableCell>

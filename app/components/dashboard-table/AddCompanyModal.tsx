@@ -17,6 +17,7 @@ import { addCompany, handleSubmit } from "@/app/actions";
 const AddCompanyModal = ({ portfolioId }: any) => {
   const [formData, setFormData] = useState({
     name: "",
+    logo: "",
     ticker: "",
     currency: "",
     type: "",
@@ -31,6 +32,8 @@ const AddCompanyModal = ({ portfolioId }: any) => {
     pvMvPercentage: 0,
     country: "",
     gics: "",
+    annualDividends: 0,
+    dividendsReceived: 0,
   });
 
   const [successMessage, setSuccessMessage] = useState(false);

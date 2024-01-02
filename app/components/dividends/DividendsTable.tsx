@@ -46,7 +46,8 @@ const DividendsTable = ({ company }: any) => {
             pvMvPercentage,
             pruValue,
             weight,
-            annualDividend,
+            annualDividends,
+            dividendsReceived,
           } = company;
 
           return (
@@ -54,8 +55,12 @@ const DividendsTable = ({ company }: any) => {
               <TableCell className="font-medium text-[#003F91]">
                 {name}
               </TableCell>
-              <TableCell className="text-[#003F91]"></TableCell>
-              <TableCell className="text-[#003F91]"></TableCell>
+              <TableCell className="text-[#003F91]">
+                {annualDividends}
+              </TableCell>
+              <TableCell className="text-[#003F91]">
+                {dividendsReceived}
+              </TableCell>
               <TableCell className="text-[#003F91]"></TableCell>
               <TableCell className="text-[#003F91]"></TableCell>
 
