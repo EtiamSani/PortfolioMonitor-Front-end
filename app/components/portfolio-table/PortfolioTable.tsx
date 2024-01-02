@@ -21,20 +21,20 @@ const PortfolioTable = async ({ company, portfolioId }: any) => {
       </TableCaption>
       <TableHeader>
         <TableRow>
-          <TableHead className="text-[#003F91]"></TableHead>
-          <TableHead className="text-[#003F91]">Nom</TableHead>
-          <TableHead className="text-[#003F91]">Pays</TableHead>
-          <TableHead className="text-[#003F91]">Devise</TableHead>
-          <TableHead className="text-[#003F91]">Catégories</TableHead>
-          <TableHead className="text-[#003F91]">Capitalisation</TableHead>
-          <TableHead className="text-[#003F91]">Nb de parts</TableHead>
-          <TableHead className="text-[#003F91]">PRU</TableHead>
-          <TableHead className="text-[#003F91]">prix de marché</TableHead>
-          <TableHead className="text-[#003F91]">Valeur PRU</TableHead>
-          <TableHead className="text-[#003F91]">Valeur Marché</TableHead>
-          <TableHead className="text-[#003F91]">Gain/Perte</TableHead>
-          <TableHead className="text-[#003F91]">PV/MV</TableHead>
-          <TableHead className="text-[#003F91]">Poids</TableHead>
+          <TableHead className="text-[#272838]"></TableHead>
+          <TableHead className="text-[#272838]">Nom</TableHead>
+          <TableHead className="text-[#272838]">Pays</TableHead>
+          <TableHead className="text-[#272838]">Devise</TableHead>
+          <TableHead className="text-[#272838]">Catégories</TableHead>
+          <TableHead className="text-[#272838]">Capitalisation</TableHead>
+          <TableHead className="text-[#272838]">Nb de parts</TableHead>
+          <TableHead className="text-[#272838]">PRU</TableHead>
+          <TableHead className="text-[#272838]">prix de marché</TableHead>
+          <TableHead className="text-[#272838]">Valeur PRU</TableHead>
+          <TableHead className="text-[#272838]">Valeur Marché</TableHead>
+          <TableHead className="text-[#272838]">Gain/Perte</TableHead>
+          <TableHead className="text-[#272838]">PV/MV</TableHead>
+          <TableHead className="text-[#272838]">Poids</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -66,37 +66,48 @@ const PortfolioTable = async ({ company, portfolioId }: any) => {
 
           return (
             <TableRow key={id}>
-              <TableCell className="font-medium text-[#003F91]">
+              <TableCell className="font-medium text-[#272838]">
                 <Image
                   src={"http://localhost:3001" + logo}
                   alt={"company logo"}
-                  width={50}
-                  height={50}
+                  width={45}
+                  height={45}
                   className="rounded-full"
                 />
               </TableCell>
-              <TableCell className="font-medium text-[#003F91]">
-                {name}
+              <TableCell className="font-medium text-[#272838]">
+                <div>
+                  <div>{name}</div>
+                  <div className="text-slate-400 text-xs">{ticker}</div>
+                </div>
               </TableCell>
-              <TableCell className="text-[#003F91]">{country}</TableCell>
-              <TableCell className="text-[#003F91]">{currency}</TableCell>
-              <TableCell className="text-[#003F91]">{stockCategory}</TableCell>
-              <TableCell className="text-[#003F91]">{capitalisation}</TableCell>
+              <TableCell className="text-[#272838]">{country}</TableCell>
+              <TableCell className="text-[#272838]">{currency}</TableCell>
+              <TableCell className="text-[#272838]">{stockCategory}</TableCell>
+              <TableCell className="text-[#272838]">{capitalisation}</TableCell>
 
-              <TableCell className="text-[#003F91]">{numberOfStocks}</TableCell>
-              <TableCell className="text-[#003F91]">{pru} €</TableCell>
-              <TableCell className="text-[#003F91]">
+              <TableCell className="text-[#272838]">{numberOfStocks}</TableCell>
+              <TableCell className="text-[#272838]">{pru} €</TableCell>
+              <TableCell className="text-[#272838]">
                 {currentStockPrice} €
               </TableCell>
-              <TableCell className="text-[#003F91]">{pruValue} €</TableCell>
-              <TableCell className="text-[#003F91]">{marketValue} €</TableCell>
-              <TableCell className="text-[#003F91]">
+              <TableCell className="text-[#272838]">{pruValue} €</TableCell>
+              <TableCell className="text-[#272838]">{marketValue} €</TableCell>
+              <TableCell
+                className={`text-[#272838] ${
+                  gainOrLoss < 0 ? "text-red-500" : "text-green-500"
+                }`}
+              >
                 {gainOrLoss.toFixed(2)} €
               </TableCell>
-              <TableCell className="text-[#003F91]">
+              <TableCell
+                className={`text-[#272838] ${
+                  pvMvPercentage < 0 ? "text-red-500" : "text-green-500"
+                }`}
+              >
                 {pvMvPercentage}%
               </TableCell>
-              <TableCell className="text-[#003F91]">
+              <TableCell className="text-[#272838]">
                 {((marketValue / portfolioValue) * 100).toFixed(2)}%
               </TableCell>
             </TableRow>

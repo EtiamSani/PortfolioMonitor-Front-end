@@ -29,7 +29,7 @@ const TableTabs = async () => {
         className="w-[1290px] ml-[300px] mt-[260px]"
       >
         <TabsList
-          className={`grid w-full lg:grid-cols-${numCols} w-[290px] bg-[#003F91] text-white`}
+          className={`grid w-full lg:grid-cols-${numCols} w-[290px] bg-slate-200 text-[#272838]`}
         >
           {names.map((name: any) => (
             <TabsTrigger key={name.id} value={name.name}>
@@ -47,10 +47,10 @@ const TableTabs = async () => {
               />
               <LastsTransactions />
             </div>
-            <Card className="border border-[#003F91] mb-5">
+            <Card className="border border-gray-200 mb-5">
               <CardHeader>
                 <CardTitle>
-                  <div className="flex text-[#003F91] text-xl items-center">
+                  <div className="flex text-[#272838] text-xl items-center">
                     <FaWallet className="mr-2" />
                     {name.name}
                   </div>
@@ -65,7 +65,7 @@ const TableTabs = async () => {
 
               <CardHeader>
                 <CardTitle>
-                  <div className="flex text-[#003F91] text-xl items-center">
+                  <div className="flex text-[#272838] text-xl items-center">
                     <FaWallet className="mr-2" />
                     Dividendes
                   </div>
@@ -76,10 +76,10 @@ const TableTabs = async () => {
               </CardContent>
             </Card>
 
-            <Card className="border border-[#003F91] h-auto">
+            <Card className="border border-gray-200 h-auto">
               <CardHeader>
                 <CardTitle>
-                  <div className="flex text-[#003F91] text-xl items-center">
+                  <div className="flex text-[#272838] text-xl items-center">
                     <IoPieChartSharp className="mr-2 text-2xl" />
                     Graphiques
                   </div>
@@ -88,7 +88,7 @@ const TableTabs = async () => {
               <CardContent className="space-y-2 ">
                 <div className=" grid grid-cols-2 gap-[5rem]">
                   <div className="w-[600px] h-[600px]">
-                    <h2 className="text-md text-[#003F91] text-center mb-3 font-semibold">
+                    <h2 className="text-md text-[#272838] text-center mb-3 font-semibold">
                       Mon Portefeuille
                     </h2>
                     <PortfolioPositionPieChart
@@ -96,7 +96,7 @@ const TableTabs = async () => {
                     />
                   </div>
                   <div className="w-[600px] h-[600px]">
-                    <h2 className="text-md text-[#003F91] text-center mb-3 font-semibold">
+                    <h2 className="text-md text-[#272838] text-center mb-3 font-semibold">
                       Allocation sectorielle (GICS)
                     </h2>
                     <PortfolioSectorialAllocationPieChart
@@ -104,7 +104,7 @@ const TableTabs = async () => {
                     />
                   </div>
                   <div className="w-[600px] h-[600px]">
-                    <h2 className="text-md text-[#003F91] text-center mb-3 font-semibold">
+                    <h2 className="text-md text-[#272838] text-center mb-3 font-semibold">
                       Allocation géographique
                     </h2>
                     <PortfolioGeographicalAllocation
@@ -112,7 +112,7 @@ const TableTabs = async () => {
                     />
                   </div>
                   <div className="w-[600px] h-[600px]">
-                    <h2 className="text-md text-[#003F91] text-center mb-3 font-semibold">
+                    <h2 className="text-md text-[#272838] text-center mb-3 font-semibold">
                       Allocation par taille d'entreprise
                     </h2>
                     <PortfolioCapitalizationAllocation
@@ -120,7 +120,7 @@ const TableTabs = async () => {
                     />
                   </div>
                   <div className="w-[600px] h-[600px]">
-                    <h2 className="text-md text-[#003F91] text-center mb-3 font-semibold">
+                    <h2 className="text-md text-[#272838] text-center mb-3 font-semibold">
                       Allocation par devise
                     </h2>
                     <PortfolioCurrencyAllocation
@@ -128,7 +128,7 @@ const TableTabs = async () => {
                     />
                   </div>
                   <div className="w-[600px] h-[600px]">
-                    <h2 className="text-md text-[#003F91] text-center mb-3 font-semibold">
+                    <h2 className="text-md text-[#272838] text-center mb-3 font-semibold">
                       Allocation a la P.Lynch
                     </h2>
                     <PortfolioPeterLynchAllocation

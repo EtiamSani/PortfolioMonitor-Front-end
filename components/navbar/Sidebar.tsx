@@ -32,12 +32,12 @@ const Sidebar = () => {
   return (
     <aside
       id="default-sidebar"
-      className="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
+      className="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0 shadow-sm"
       aria-label="Sidebar"
     >
-      <div className="h-full px-3 py-4 overflow-y-auto bg-[#003F91] dark:bg-gray-800 gap-y-5">
+      <div className="h-full px-3 py-4 overflow-y-auto bg-[#495582] dark:bg-gray-800 gap-y-5">
         <div className="flex flex-col  items-center mb-10">
-          <h1 className="text-4xl text-white font-bold">EIP </h1>
+          <h1 className="text-5xl text-white font-bold">EIP </h1>
           <h2 className="text-2xl text-white font-bold">Portfolio </h2>
         </div>
         <ul className="space-y-2 font-medium">
@@ -45,12 +45,12 @@ const Sidebar = () => {
             <div className="w-full mb-8">
               <Button
                 variant="noStyle"
-                className="flex items-center  text-white hover:text-[#003F91] rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group w-full"
+                className="flex items-center text-white hover:text-[#272838] rounded-lg dark:text-white hover:bg-white dark:hover:bg-gray-700 group w-full"
                 onClick={handlePortfolio}
               >
                 <div className="w-full">
                   <div className="flex items-center">
-                    <GoHomeFill className="text-2xl text-white transition duration-75 dark:text-gray-400 group-hover:text-[#003F91] dark:group-hover:text-white" />
+                    <GoHomeFill className="text-2xl text-white transition duration-75 dark:text-gray-400 group-hover:text-[#272838] dark:group-hover:text-white" />
                     <span className="ml-5 text-xl">Portefeuilles</span>
                   </div>
                 </div>
@@ -61,12 +61,12 @@ const Sidebar = () => {
             <div className="w-full  mb-8">
               <Button
                 variant="noStyle"
-                className="flex items-center  text-white hover:text-[#003F91] rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group w-full"
+                className="flex items-center  text-white hover:text-[#272838] rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group w-full"
                 onClick={handleDashboard}
               >
                 <div className="w-full">
                   <div className="flex items-center">
-                    <MdOutlineDashboard className="text-2xl text-white transition duration-75 dark:text-gray-400 group-hover:text-[#003F91] dark:group-hover:text-white" />
+                    <MdOutlineDashboard className="text-2xl text-white transition duration-75 dark:text-gray-400 group-hover:text-[#272838] dark:group-hover:text-white" />
                     <span className="ml-5 text-xl">Dashboard</span>
                   </div>
                 </div>
@@ -77,12 +77,12 @@ const Sidebar = () => {
             <div className="w-full mb-8">
               <Button
                 variant="noStyle"
-                className="flex items-center text-white hover:text-[#003F91] rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group w-full"
+                className="flex items-center text-white hover:text-[#272838] rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group w-full"
                 onClick={handleHome}
               >
                 <div className="w-full">
                   <div className="flex items-center">
-                    <HiMiniUsers className="text-2xl text-white transition duration-75 dark:text-gray-400 group-hover:text-[#003F91] dark:group-hover:text-white" />
+                    <HiMiniUsers className="text-2xl text-white transition duration-75 dark:text-gray-400 group-hover:text-[#272838] dark:group-hover:text-white" />
                     <span className="ml-5 text-xl">Abonnées</span>
                   </div>
                 </div>
@@ -93,12 +93,12 @@ const Sidebar = () => {
             <div className="w-full mb-8">
               <Button
                 variant="noStyle"
-                className="flex items-center  text-white hover:text-[#003F91] rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group w-full"
+                className="flex items-center  text-white hover:text-[#272838] rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group w-full"
                 onClick={handleHome}
               >
                 <div className="w-full ">
                   <div className="flex items-center">
-                    <FaRegFile className="text-2xl text-white transition duration-75 dark:text-gray-400 group-hover:text-[#003F91] dark:group-hover:text-white" />
+                    <FaRegFile className="text-2xl text-white transition duration-75 dark:text-gray-400 group-hover:text-[#272838] dark:group-hover:text-white" />
                     <span className="ml-5 text-xl">Analyses</span>
                   </div>
                 </div>

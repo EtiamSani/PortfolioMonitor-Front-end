@@ -1,10 +1,8 @@
 import type { Metadata } from 'next'
-import { Inter, Rubik } from "next/font/google";
-import './globals.css'
+import { Inter, Rubik, Open_Sans, Raleway } from "next/font/google";
+import "./globals.css";
 
-
-
-const rubik = Rubik({ subsets: ["latin"] });
+const raleway = Raleway({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Portefeuilles - EIP",
@@ -14,15 +12,10 @@ export const metadata: Metadata = {
   },
 };
 
-
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={rubik.className}>{children}</body>
+      <body className={raleway.className}>{children}</body>
     </html>
   );
 }

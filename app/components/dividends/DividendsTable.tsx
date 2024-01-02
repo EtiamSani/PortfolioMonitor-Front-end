@@ -15,12 +15,12 @@ const DividendsTable = ({ company }: any) => {
       <TableCaption>A list of your recent invoices.</TableCaption>
       <TableHeader>
         <TableRow>
-          <TableHead className="text-[#003F91]">Nom</TableHead>
-          <TableHead className="text-[#003F91]">Dividendes annuel</TableHead>
-          <TableHead className="text-[#003F91]">Dividendes reçu</TableHead>
-          <TableHead className="text-[#003F91]">Rendement</TableHead>
-          <TableHead className="text-[#003F91]">Rendement sur coût</TableHead>
-          <TableHead className="text-[#003F91]">Revenu</TableHead>
+          <TableHead className="text-[#272838]">Nom</TableHead>
+          <TableHead className="text-[#272838]">Dividendes annuel</TableHead>
+          <TableHead className="text-[#272838]">Dividendes reçu</TableHead>
+          <TableHead className="text-[#272838]">Rendement</TableHead>
+          <TableHead className="text-[#272838]">Rendement sur coût</TableHead>
+          <TableHead className="text-[#272838]">Revenu</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -52,23 +52,23 @@ const DividendsTable = ({ company }: any) => {
 
           return (
             <TableRow key={id}>
-              <TableCell className="font-medium text-[#003F91]">
+              <TableCell className="font-medium text-[#272838]">
                 {name}
               </TableCell>
-              <TableCell className="text-[#003F91]">
+              <TableCell className="text-[#272838]">
                 {annualDividends}
               </TableCell>
-              <TableCell className="text-[#003F91]">
+              <TableCell className="text-[#272838]">
                 {dividendsReceived}
               </TableCell>
-              <TableCell className="text-[#003F91]">
+              <TableCell className="text-[#272838]">
                 {((annualDividends / currentStockPrice) * 100).toFixed(2)}%
               </TableCell>
-              <TableCell className="text-[#003F91]">
+              <TableCell className="text-[#272838]">
                 {((annualDividends / pru) * 100).toFixed(2)}%
               </TableCell>
 
-              <TableCell className="text-[#003F91]">
+              <TableCell className="text-[#272838]">
                 {(numberOfStocks * annualDividends).toFixed(2)} €
               </TableCell>
             </TableRow>

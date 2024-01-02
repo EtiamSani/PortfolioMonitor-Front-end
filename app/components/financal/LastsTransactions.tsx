@@ -30,26 +30,20 @@ const LastsTransactions = async () => {
   const boughtShares = await fetchBoughtShares();
   const soldShares = await fetchSoldShares();
   return (
-    <Card className="border border-[#003F91] ml-5 w-[450px] h-auto  mt-[52px] z-10 ">
+    <Card className="ml-5 w-[450px] h-auto  mt-[52px] z-10 bg-white border border-gray-200 ">
       <CardHeader>
         <div className="flex items-center">
-          <CardTitle className="text-[#003F91]">
+          <CardTitle className="text-[#C29E3C]">
             Dernières transactions
           </CardTitle>
-          <FaRegNewspaper className="text-[#003F91] text-2xl ml-2" />
+          <FaRegNewspaper className="text-[#C29E3C] text-2xl ml-2" />
         </div>
       </CardHeader>
 
       <CardContent>
         <Accordion type="single" collapsible className="w-full">
-          {/* <AccordionItem value="item-1">
-              <AccordionTrigger>Is it accessible?</AccordionTrigger>
-              <AccordionContent>
-                Yes. It adheres to the WAI-ARIA design pattern.
-              </AccordionContent>
-            </AccordionItem> */}
           <AccordionItem value="item-1">
-            <AccordionTrigger className="text-[#003F91]">
+            <AccordionTrigger className="text-[#272838]">
               Achats
             </AccordionTrigger>
             <AccordionContent>
@@ -57,21 +51,21 @@ const LastsTransactions = async () => {
                 <TableBody>
                   {boughtShares.map((bought, index) => (
                     <TableRow key={index}>
-                      <TableCell className="font-medium text-[#003F91]">
+                      <TableCell className="font-medium text-[#272838]">
                         {bought.numberOfStocks}
                       </TableCell>
-                      <TableCell className="text-[#003F91]">
+                      <TableCell className="text-[#272838]">
                         {bought.nature}
                       </TableCell>
                       <TableCell>
                         <Badge
                           variant="outline"
-                          className="border-[#003F91] text-[#003F91]"
+                          className="border-[#272838] text-[#272838]"
                         >
                           {bought.priceOfShare} €
                         </Badge>
                       </TableCell>
-                      <TableCell className="text-[#003F91]">
+                      <TableCell className="text-[#272838]">
                         {formatDate(bought.createdAt)}
                       </TableCell>
                     </TableRow>
@@ -81,7 +75,7 @@ const LastsTransactions = async () => {
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-3">
-            <AccordionTrigger className="text-[#003F91]">
+            <AccordionTrigger className="text-[#272838]">
               Vente
             </AccordionTrigger>
             <AccordionContent>
@@ -89,21 +83,21 @@ const LastsTransactions = async () => {
                 <TableBody>
                   {soldShares.map((sold, index) => (
                     <TableRow key={index}>
-                      <TableCell className="font-medium text-[#003F91]">
+                      <TableCell className="font-medium text-[#272838]">
                         {sold.numberOfStocks}
                       </TableCell>
-                      <TableCell className="text-[#003F91]">
+                      <TableCell className="text-[#272838]">
                         {sold.nature}
                       </TableCell>
                       <TableCell>
                         <Badge
                           variant="outline"
-                          className="border-[#003F91] text-[#003F91]"
+                          className="border-[#272838] text-[#272838]"
                         >
                           {sold.priceOfShare} €
                         </Badge>
                       </TableCell>
-                      <TableCell className="text-[#003F91]">
+                      <TableCell className="text-[#272838]">
                         {formatDate(sold.createdAt)}
                       </TableCell>
                     </TableRow>

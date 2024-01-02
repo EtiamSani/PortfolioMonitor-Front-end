@@ -43,11 +43,13 @@ const PortfolioValue = ({
   ).toFixed(3);
 
   return (
-    <Card className="w-[260px]  mt-[50px] bg-[#003F91] ml-5">
+    <Card className="w-[260px]  mt-[50px] bg-[#495582] shadow-md ml-5">
       <CardHeader>
         <div className="flex items-center">
-          <CardTitle className="text-white">Valeur du portefeuille</CardTitle>
-          <IoDiamondOutline className="text-white text-2xl ml-2 " />
+          <CardTitle className="text-[#C29E3C]">
+            Valeur du portefeuille
+          </CardTitle>
+          <IoDiamondOutline className="text-[#C29E3C] text-2xl ml-2 " />
         </div>
       </CardHeader>
       <CardContent>
@@ -55,8 +57,28 @@ const PortfolioValue = ({
           <h2 className="text-4xl font-bold text-white">{portfolioValue} €</h2>
           <h2 className=" font-bold text-white text-left">
             <div className="flex">
-              <div className="mr-4">{portfolioTotalGainOrLost} €</div>
-              <div>{PourcentPortfolioValue} %</div>
+              <div className="mr-4">
+                <span
+                  className={
+                    portfolioTotalGainOrLost < 0
+                      ? "text-red-500"
+                      : "text-green-500"
+                  }
+                >
+                  {portfolioTotalGainOrLost} €
+                </span>
+              </div>
+              <div>
+                <span
+                  className={
+                    PourcentPortfolioValue < 0
+                      ? "text-red-500"
+                      : "text-green-500"
+                  }
+                >
+                  ({PourcentPortfolioValue} %)
+                </span>
+              </div>
             </div>
           </h2>
         </div>
