@@ -62,6 +62,7 @@ export async function addCompany(portfolioId: any, formData: any) {
     ...formData,
     numberOfStocks: parseFloat(formData.numberOfStocks.replace(',','.')),
     pru: parseFloat(formData.pru.replace(',','.')),
+    annualDividends: parseFloat(formData.annualDividends.replace(',','.'))
   };
   console.log(formattedData);
   try {

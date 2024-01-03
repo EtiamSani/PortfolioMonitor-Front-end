@@ -2,9 +2,13 @@
 
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Pie } from "react-chartjs-2";
+import ChartDataLabels from "chartjs-plugin-datalabels";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const PortfolioSectorialAllocationPieChart = ({ company }: any) => {
+const PortfolioSectorialAllocationPieChart = ({
+  company,
+  portfolioData,
+}: any) => {
   // Créer un objet pour stocker les valeurs de marketValue pour chaque catégorie
   const gicsValues: { [key: string]: number } = {};
 
@@ -23,6 +27,30 @@ const PortfolioSectorialAllocationPieChart = ({ company }: any) => {
   // Extraire les catégories et les valeurs agrégées pour le graphique
   const labels = Object.keys(gicsValues);
   const data = Object.values(gicsValues);
+
+  const liquidityLabel = "Liquidité";
+  const liquidityValue = portfolioData.liquidity;
+
+  labels.push(liquidityLabel);
+  data.push(liquidityValue);
+
+  const options = {
+    plugins: {
+      datalabels: {
+        formatter: (value: any, ctx: any) => {
+          const sum = ctx.dataset.data.reduce(
+            (acc: number, data: any) => acc + data,
+            0
+          );
+          const percentage = ((value * 100) / sum).toFixed(2) + "%";
+          return percentage;
+        },
+        color: "#fff",
+        display: true,
+      },
+    },
+  };
+
   const chartData = {
     labels: labels,
     datasets: [
@@ -57,7 +85,7 @@ const PortfolioSectorialAllocationPieChart = ({ company }: any) => {
       },
     },
   };
-  return <Pie data={chartData} />;
+  return <Pie data={chartData} options={options} plugins={[ChartDataLabels]} />;
 };
 
 export default PortfolioSectorialAllocationPieChart;

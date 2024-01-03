@@ -166,12 +166,12 @@ const AddCompanyModal = ({ portfolioId }: any) => {
           />
         </div>
         <div className="grid grid-cols-4 items-center gap-4">
-          <Label htmlFor="dividendsReceived" className="text-right">
+          <Label htmlFor="annualDividends" className="text-right">
             Dividendes annuels
           </Label>
           <Input
-            id="type"
-            value={formData.dividendsReceived}
+            id="annualDividends"
+            value={formData.annualDividends}
             onChange={handleChange}
             className="col-span-3"
           />

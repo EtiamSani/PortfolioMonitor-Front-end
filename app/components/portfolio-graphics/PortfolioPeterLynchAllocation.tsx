@@ -6,7 +6,7 @@ import ChartDataLabels from "chartjs-plugin-datalabels";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const PortfolioPeterLynchAllocation = ({ company }: any) => {
+const PortfolioPeterLynchAllocation = ({ company, portfolioData }: any) => {
   // Créer un objet pour stocker les valeurs de marketValue pour chaque catégorie
   const categoryValues: { [key: string]: number } = {};
 
@@ -25,6 +25,12 @@ const PortfolioPeterLynchAllocation = ({ company }: any) => {
   // Extraire les catégories et les valeurs agrégées pour le graphique
   const labels = Object.keys(categoryValues);
   const data = Object.values(categoryValues);
+
+  const liquidityLabel = "Liquidité";
+  const liquidityValue = portfolioData.liquidity;
+
+  labels.push(liquidityLabel);
+  data.push(liquidityValue);
 
   const options = {
     plugins: {

@@ -87,23 +87,25 @@ const TableTabs = async () => {
               </CardHeader>
               <CardContent className="space-y-2 ">
                 <div className=" grid grid-cols-2 gap-[5rem]">
-                  <div className="w-[600px] h-[600px]">
+                  <div className="w-[400px] h-[400px]">
                     <h2 className="text-md text-[#272838] text-center mb-3 font-semibold">
                       Mon Portefeuille
                     </h2>
                     <PortfolioPositionPieChart
                       company={name.PortfolioCompany}
+                      portfolioData={name}
                     />
                   </div>
-                  <div className="w-[600px] h-[600px]">
+                  <div className="w-[400px] h-[400px]">
                     <h2 className="text-md text-[#272838] text-center mb-3 font-semibold">
                       Allocation sectorielle (GICS)
                     </h2>
                     <PortfolioSectorialAllocationPieChart
                       company={name.PortfolioCompany}
+                      portfolioData={name}
                     />
                   </div>
-                  <div className="w-[600px] h-[600px]">
+                  <div className="w-[400px] h-[400px]">
                     <h2 className="text-md text-[#272838] text-center mb-3 font-semibold">
                       Allocation géographique
                     </h2>
@@ -111,15 +113,16 @@ const TableTabs = async () => {
                       company={name.PortfolioCompany}
                     />
                   </div>
-                  <div className="w-[600px] h-[600px]">
+                  <div className="w-[400px] h-[400px]">
                     <h2 className="text-md text-[#272838] text-center mb-3 font-semibold">
                       Allocation par taille d'entreprise
                     </h2>
                     <PortfolioCapitalizationAllocation
                       company={name.PortfolioCompany}
+                      portfolioData={name}
                     />
                   </div>
-                  <div className="w-[600px] h-[600px]">
+                  <div className="w-[400px] h-[400px]">
                     <h2 className="text-md text-[#272838] text-center mb-3 font-semibold">
                       Allocation par devise
                     </h2>
@@ -127,12 +130,13 @@ const TableTabs = async () => {
                       company={name.PortfolioCompany}
                     />
                   </div>
-                  <div className="w-[600px] h-[600px]">
+                  <div className="w-[400px] h-[400px]">
                     <h2 className="text-md text-[#272838] text-center mb-3 font-semibold">
                       Allocation a la P.Lynch
                     </h2>
                     <PortfolioPeterLynchAllocation
                       company={name.PortfolioCompany}
+                      portfolioData={name}
                     />
                   </div>
                 </div>

@@ -2,10 +2,10 @@
 
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Pie } from "react-chartjs-2";
+import ChartDataLabels from "chartjs-plugin-datalabels";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const PortfolioCapitalizationAllocation = ({ company }: any) => {
-  console.log(company);
+const PortfolioCapitalizationAllocation = ({ company, portfolioData }: any) => {
   const capitalizationValues: { [key: string]: number } = {};
 
   // Agréger les valeurs de marketValue pour chaque catégorie
@@ -23,6 +23,30 @@ const PortfolioCapitalizationAllocation = ({ company }: any) => {
   // Extraire les catégories et les valeurs agrégées pour le graphique
   const labels = Object.keys(capitalizationValues);
   const data = Object.values(capitalizationValues);
+
+  const liquidityLabel = "Liquidité";
+  const liquidityValue = portfolioData.liquidity;
+
+  labels.push(liquidityLabel);
+  data.push(liquidityValue);
+
+  const options = {
+    plugins: {
+      datalabels: {
+        formatter: (value: any, ctx: any) => {
+          const sum = ctx.dataset.data.reduce(
+            (acc: number, data: any) => acc + data,
+            0
+          );
+          const percentage = ((value * 100) / sum).toFixed(2) + "%";
+          return percentage;
+        },
+        color: "#fff",
+        display: true,
+      },
+    },
+  };
+
   const chartData = {
     labels: labels,
     datasets: [
@@ -48,16 +72,8 @@ const PortfolioCapitalizationAllocation = ({ company }: any) => {
         borderWidth: 1,
       },
     ],
-    options: {
-      plugins: {
-        title: {
-          display: true,
-          text: "Custom Chart Title",
-        },
-      },
-    },
   };
-  return <Pie data={chartData} />;
+  return <Pie data={chartData} options={options} plugins={[ChartDataLabels]} />;
 };
 
 export default PortfolioCapitalizationAllocation;

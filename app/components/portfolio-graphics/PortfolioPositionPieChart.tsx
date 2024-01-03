@@ -2,18 +2,42 @@
 
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Pie } from "react-chartjs-2";
+import ChartDataLabels from "chartjs-plugin-datalabels";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const PortfolioPositionPieChart = ({ company }: any) => {
+const PortfolioPositionPieChart = ({ company, portfolioData }: any) => {
   const labels = company.map((item: any) => item.company.name);
   const data = company.map((item: any) => item.company.marketValue);
 
+  const liquidityLabel = "Liquidité";
+  const liquidityValue = portfolioData.liquidity;
+
+  const updatedLabels = [...labels, liquidityLabel];
+  const updatedData = [...data, liquidityValue];
+
+  const options = {
+    plugins: {
+      datalabels: {
+        formatter: (value: any, ctx: any) => {
+          const sum = ctx.dataset.data.reduce(
+            (acc: number, data: any) => acc + data,
+            0
+          );
+          const percentage = ((value * 100) / sum).toFixed(2) + "%";
+          return percentage;
+        },
+        color: "#fff",
+        display: true,
+      },
+    },
+  };
+
   const chartData = {
-    labels: labels,
+    labels: updatedLabels,
     datasets: [
       {
         label: "Poids en €",
-        data: data,
+        data: updatedData,
         backgroundColor: [
           "rgba(0, 88, 204, 1)",
           "rgba(10, 116, 255, 1)",
@@ -42,7 +66,7 @@ const PortfolioPositionPieChart = ({ company }: any) => {
       },
     },
   };
-  return <Pie data={chartData} />;
+  return <Pie data={chartData} options={options} plugins={[ChartDataLabels]} />;
 };
 
 export default PortfolioPositionPieChart;
