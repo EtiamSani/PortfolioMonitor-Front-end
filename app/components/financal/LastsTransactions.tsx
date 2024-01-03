@@ -30,7 +30,7 @@ const LastsTransactions = async () => {
   const boughtShares = await fetchBoughtShares();
   const soldShares = await fetchSoldShares();
   return (
-    <Card className="ml-5 w-[450px] h-auto  mt-[52px] z-10 bg-white border border-gray-200 ">
+    <Card className="ml-5 w-[450px] h-auto  mt-[52px] z-10 bg-[#495582]">
       <CardHeader>
         <div className="flex items-center">
           <CardTitle className="text-[#C29E3C]">
@@ -43,29 +43,27 @@ const LastsTransactions = async () => {
       <CardContent>
         <Accordion type="single" collapsible className="w-full">
           <AccordionItem value="item-1">
-            <AccordionTrigger className="text-[#272838]">
-              Achats
-            </AccordionTrigger>
+            <AccordionTrigger className="text-white">Achats</AccordionTrigger>
             <AccordionContent>
               <Table>
                 <TableBody>
                   {boughtShares.map((bought, index) => (
                     <TableRow key={index}>
-                      <TableCell className="font-medium text-[#272838]">
+                      <TableCell className="font-medium text-white">
                         {bought.numberOfStocks}
                       </TableCell>
-                      <TableCell className="text-[#272838]">
+                      <TableCell className="text-white">
                         {bought.nature}
                       </TableCell>
                       <TableCell>
                         <Badge
                           variant="outline"
-                          className="border-[#272838] text-[#272838]"
+                          className="border-[#272838] text-white"
                         >
                           {bought.priceOfShare} €
                         </Badge>
                       </TableCell>
-                      <TableCell className="text-[#272838]">
+                      <TableCell className="text-white">
                         {formatDate(bought.createdAt)}
                       </TableCell>
                     </TableRow>
@@ -75,29 +73,27 @@ const LastsTransactions = async () => {
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-3">
-            <AccordionTrigger className="text-[#272838]">
-              Vente
-            </AccordionTrigger>
+            <AccordionTrigger className="text-white">Vente</AccordionTrigger>
             <AccordionContent>
               <Table>
                 <TableBody>
                   {soldShares.map((sold, index) => (
                     <TableRow key={index}>
-                      <TableCell className="font-medium text-[#272838]">
+                      <TableCell className="font-medium text-white">
                         {sold.numberOfStocks}
                       </TableCell>
-                      <TableCell className="text-[#272838]">
+                      <TableCell className="text-white">
                         {sold.nature}
                       </TableCell>
                       <TableCell>
                         <Badge
                           variant="outline"
-                          className="border-[#272838] text-[#272838]"
+                          className="border-white text-white"
                         >
                           {sold.priceOfShare} €
                         </Badge>
                       </TableCell>
-                      <TableCell className="text-[#272838]">
+                      <TableCell className="text-white">
                         {formatDate(sold.createdAt)}
                       </TableCell>
                     </TableRow>
