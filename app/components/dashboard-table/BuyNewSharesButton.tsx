@@ -8,8 +8,8 @@ const BuyNewSharesButton = ({ companyId }: any) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="bg-[#003F91] p-5 hover:bg-[#1B98E0] ">
-          <GiPayMoney className="text-xl mr-3" />
+        <Button>
+          <GiPayMoney className="text-xl" />
           <div className="ml-3">Achat</div>
         </Button>
       </DialogTrigger>

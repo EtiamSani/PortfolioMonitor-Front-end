@@ -9,9 +9,9 @@ const AddDividendsButton = ({ companyId }: any) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="bg-[#003F91] p-5 hover:bg-[#1B98E0] ">
-          <GiReceiveMoney className="text-xl mr-3" />
-          <div className="ml-1">Dividendes</div>
+        <Button>
+          <GiReceiveMoney className="text-xl" />
+          <div className="ml-3">Dividendes</div>
         </Button>
       </DialogTrigger>
 

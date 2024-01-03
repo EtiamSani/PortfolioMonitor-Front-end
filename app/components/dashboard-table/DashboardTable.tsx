@@ -19,22 +19,19 @@ import UpdateCompanyButton from "./UpdateCompanyButton";
 import BuyNewSharesButton from "./BuyNewSharesButton";
 import SellSharesButton from "./SellSharesButton";
 import AddDividendsButton from "./AddDividendsButton";
+import Image from "next/image";
 
 const DashboardTable = ({ company }: any) => {
   let totalMarketValue = 0;
   return (
     <div className="m-auto">
       <Table className="w-[1200px] mt-[30px] ">
-        <TableCaption>A list of your recent invoices.</TableCaption>
         <TableHeader>
           <TableRow>
-            <TableHead className="w-[100px]">Nom</TableHead>
-            <TableHead>Pays</TableHead>
-            <TableHead>Devise</TableHead>
-            <TableHead>Catégories</TableHead>
-            <TableHead>Capitalisation</TableHead>
-            <TableHead>Nb de parts</TableHead>
-            <TableHead>PRU</TableHead>
+            <TableHead></TableHead>
+            <TableHead className="text-[#272838]">Nom</TableHead>
+            <TableHead className="text-[#272838]">Nb de parts</TableHead>
+            <TableHead className="text-[#272838]">PRU</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -61,30 +58,33 @@ const DashboardTable = ({ company }: any) => {
               pvMvPercentage,
               pruValue,
               weight,
+              logo,
             } = company;
 
             totalMarketValue += marketValue;
             return (
               <TableRow key={id}>
-                <TableCell className="font-medium">{name}</TableCell>
-                <TableCell>{country}</TableCell>
-                <TableCell>{currency}</TableCell>
-                <TableCell>{stockCategory}</TableCell>
-                <TableCell>{capitalisation}</TableCell>
-                <TableCell>{numberOfStocks}</TableCell>
-                <TableCell>{pru}</TableCell>
-                <TableCell>{marketValue}</TableCell>
-
                 <TableCell>
-                  <div className="flex gap-2">
+                  <Image
+                    src={"http://localhost:3001" + logo}
+                    alt={"company logo"}
+                    width={45}
+                    height={45}
+                    className="rounded-full"
+                  />
+                </TableCell>
+                <TableCell className="text-[#272838]">{name}</TableCell>
+                <TableCell className="text-[#272838]">
+                  {numberOfStocks}
+                </TableCell>
+                <TableCell className="text-[#272838]">{pru}</TableCell>
+                <TableCell className="text-[#272838]">
+                  <div className="flex gap-2 w-[330px]">
                     <BuyNewSharesButton companyId={companyId} />
                     <SellSharesButton companyId={companyId} />
                     <UpdateCompanyButton companyId={companyId} />
                     <AddDividendsButton companyId={companyId} />
-                    <Button
-                      className="bg-[#003F91] p-5 hover:bg-[#1B98E0] "
-                      onClick={() => deleteCompany(companyId)}
-                    >
+                    <Button onClick={() => deleteCompany(companyId)}>
                       <BsBuildingFillX className="text-xl mr-3" />
                       <div>Supprimer</div>
                     </Button>
@@ -94,12 +94,6 @@ const DashboardTable = ({ company }: any) => {
             );
           })}
         </TableBody>
-        <TableFooter>
-          <TableRow>
-            <TableCell colSpan={3}>Total</TableCell>
-            <TableCell>{totalMarketValue}</TableCell>
-          </TableRow>
-        </TableFooter>
       </Table>
     </div>
   );

@@ -2,30 +2,13 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { FaPenToSquare } from "react-icons/fa6";
 
-import { cookies } from "next/headers";
+
 import DashboardTable from "./DashboardTable";
 import Buttons from "./AddCompanyButton";
 import DashboardFinancialPart from "../financal/DashboardFinancialPart";
-import { useState } from "react";
+
 import { fetchPortfolioNames } from "@/app/actions";
 import PortfolioValue from "../financal/PortfolioValue";
-
-// const fetchPortfolioNames = async () => {
-//   const cookieStore = cookies();
-//   const cookieInformation = cookieStore.get("ownerId");
-//   const ownerId = cookieInformation.value;
-
-//   try {
-//     const response = await fetch(`http://localhost:3001/portfolio/${ownerId}`);
-//     if (!response.ok) {
-//       throw new Error("Network response was not ok.");
-//     }
-//     return response.json();
-//   } catch (error) {
-//     console.error("Error fetching data:", error);
-//     throw error;
-//   }
-// };
 
 const DashboardTableTabs = async () => {
   const names = await fetchPortfolioNames();
@@ -35,16 +18,18 @@ const DashboardTableTabs = async () => {
   return (
     <Tabs
       defaultValue={firstPortfolioName}
-      className="w-[1290px] ml-[424px] mt-[320px]"
+      className="w-[1290px] ml-[420px] mt-[240px] "
     >
-      <TabsList className={`grid w-full lg:grid-cols-${numCols} w-[290px]`}>
-        {names.map((name) => (
+      <TabsList
+        className={`grid w-full lg:grid-cols-${numCols} w-[290px] bg-slate-200 text-[#272838] mb-5 mt-10`}
+      >
+        {names.map((name: any) => (
           <TabsTrigger key={name.id} value={name.name}>
             {name.name}
           </TabsTrigger>
         ))}
       </TabsList>
-      {names.map((name) => (
+      {names.map((name: any) => (
         <TabsContent key={name.id} value={name.name}>
           <div className="absolute top-0 flex">
             <DashboardFinancialPart portfolioId={name.id} financeData={name} />
@@ -53,12 +38,12 @@ const DashboardTableTabs = async () => {
               moneyInput={name.moneyInput}
             />
           </div>
-          <Card>
+          <Card className="border border-gray-200 mb-5">
             <Buttons portfolioId={name.id} />
             <CardHeader>
               <CardTitle>
-                <div className="flex text-[#003F91] text-xl items-center">
-                  <FaPenToSquare className="mr-2" />
+                <div className="flex text-[#272838] text-xl items-center">
+                  <FaPenToSquare className="mr-2 text-[#272838]" />
                   {name.name}
                 </div>
               </CardTitle>

@@ -30,7 +30,7 @@ const LastsTransactions = async () => {
   const boughtShares = await fetchBoughtShares();
   const soldShares = await fetchSoldShares();
   return (
-    <Card className="ml-5 w-[450px] h-auto  mt-[52px] z-10 bg-[#495582]">
+    <Card className="ml-5 w-[450px] h-auto  mt-[52px] z-10 bg-[#495582] hidden md:block">
       <CardHeader>
         <div className="flex items-center">
           <CardTitle className="text-[#C29E3C]">

@@ -26,10 +26,10 @@ const TableTabs = async () => {
     <div className="flex flex-col">
       <Tabs
         defaultValue={firstPortfolioName}
-        className="w-[1290px] ml-[420px] mt-[240px]"
+        className="lg:w-[1290px] lg:ml-[420px] mt-[240px] w-[370px]"
       >
         <TabsList
-          className={`grid w-full lg:grid-cols-${numCols} w-[290px] bg-slate-200 text-[#272838] mb-5 mt-10`}
+          className={`lg:grid lg:w-full lg:grid-cols-${numCols} lg:w-[290px] bg-slate-200 text-[#272838] mb-5 mt-10`}
         >
           {names.map((name: any) => (
             <TabsTrigger key={name.id} value={name.name}>

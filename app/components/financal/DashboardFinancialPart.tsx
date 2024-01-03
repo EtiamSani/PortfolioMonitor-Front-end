@@ -2,25 +2,10 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { fetchPortfolioById, updatePortfolioData } from "@/app/actions";
-import { useEffect, useState } from "react";
+import { updatePortfolioData } from "@/app/actions";
+import { useState } from "react";
 
 const DashboardFinancialPart = ({ portfolioId, financeData }: any) => {
-  // const [portfolioData, setPortfolioData] = useState<any>({});
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const data = await fetchPortfolioById(portfolioId);
-
-  //       setPortfolioData(data);
-  //     } catch (error) {
-  //       console.error("Error fetching portfolio data:", error);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, [portfolioId]);
   const [formData, setFormData] = useState({
     moneyInput: "",
   });
@@ -29,11 +14,7 @@ const DashboardFinancialPart = ({ portfolioId, financeData }: any) => {
     const { id, value } = e.target;
     let updatedValue = value;
 
-    // Convertir les virgules en points ou vice versa
     updatedValue = updatedValue.replace(",", ".");
-
-    // Gérer la saisie de l'utilisateur ici
-    // Assurez-vous de valider la saisie selon vos besoins
 
     setFormData((prevData) => ({
       ...prevData,
@@ -43,7 +24,7 @@ const DashboardFinancialPart = ({ portfolioId, financeData }: any) => {
 
   return (
     <div className="flex gap-5 ">
-      <Card className="w-[260px] ml-[70px] mt-[50px] border-none bg-[#1B98E0]">
+      <Card className="w-[260px]  mt-[50px] bg-[#495582] h-[203px]">
         {" "}
         <CardHeader>
           <CardTitle className="text-[#FAFAFA]">Liquidités</CardTitle>
@@ -55,12 +36,12 @@ const DashboardFinancialPart = ({ portfolioId, financeData }: any) => {
         </CardContent>
       </Card>
 
-      <Card className="w-[260px]  mt-[50px]  bg-[#FAFAFA]">
+      <Card className="w-[260px]  mt-[50px] bg-[#495582] h-[203px]">
         <CardHeader>
-          <CardTitle className="text-[#1B98E0]">Total apports</CardTitle>
+          <CardTitle className="text-white">Total apports</CardTitle>
         </CardHeader>
         <CardContent>
-          <h2 className="text-4xl font-bold text-[#1B98E0]">
+          <h2 className="text-4xl font-bold text-white">
             {financeData.moneyInput} €
           </h2>
         </CardContent>

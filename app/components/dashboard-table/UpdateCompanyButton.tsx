@@ -8,8 +8,8 @@ const UpdateCompanyButton = ({ companyId }: any) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="bg-[#003F91] p-5 hover:bg-[#1B98E0] ">
-          <BsBuildingFillX className="text-xl mr-3" />
+        <Button>
+          <BsBuildingFillX className="text-xl " />
           <div className="ml-3">Modifier</div>
         </Button>
       </DialogTrigger>

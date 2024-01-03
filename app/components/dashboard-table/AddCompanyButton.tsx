@@ -11,7 +11,7 @@ const AddCompanyButton = ({ portfolioId, handleSubmit }: any) => {
       <div className="flex ">
         <Dialog>
           <DialogTrigger asChild>
-            <Button className="bg-[#003F91] p-5 hover:bg-[#1B98E0] mt-4">
+            <Button className="mt-4">
               <BsBuildingAdd className="text-3xl cursor-pointer" />
               <div className="ml-3">Ajouter une entreprise</div>
             </Button>

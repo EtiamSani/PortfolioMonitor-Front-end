@@ -4,7 +4,7 @@ import { GiMoneyStack, GiTwoCoins } from "react-icons/gi";
 const FinancalPart = ({ financeData }: any) => {
   return (
     <div className="flex gap-5 ">
-      <Card className="w-[260px] mt-[50px] bg-[#495582] h-[203px] ">
+      <Card className="w-[260px] mt-[50px] bg-[#495582] h-[203px] hidden md:block">
         {" "}
         <CardHeader>
           <div className="flex items-center">
@@ -13,13 +13,13 @@ const FinancalPart = ({ financeData }: any) => {
           </div>
         </CardHeader>
         <CardContent>
-          <h2 className="text-5xl font-bold text-white mt-5">
+          <h2 className="text-4xl font-bold text-white mt-5">
             {financeData.liquidity} €
           </h2>
         </CardContent>
       </Card>
 
-      <Card className="w-[260px]  mt-[50px] bg-[#495582] h-[203px] ">
+      <Card className="w-[260px]  mt-[50px] bg-[#495582] h-[203px] hidden md:block ">
         <CardHeader>
           <div className="flex items-center">
             <CardTitle className="text-[#C29E3C]">Total apports</CardTitle>
@@ -27,7 +27,7 @@ const FinancalPart = ({ financeData }: any) => {
           </div>
         </CardHeader>
         <CardContent>
-          <h2 className="text-5xl font-bold text-white mt-5">
+          <h2 className="text-4xl font-bold text-white mt-5">
             {financeData.moneyInput} €
           </h2>
         </CardContent>

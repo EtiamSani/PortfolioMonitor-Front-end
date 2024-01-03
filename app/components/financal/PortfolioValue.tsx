@@ -43,7 +43,7 @@ const PortfolioValue = ({
   ).toFixed(3);
 
   return (
-    <Card className="w-[260px]  h-[203px] mt-[50px] bg-[#495582] shadow-md ml-5">
+    <Card className="lg:w-[260px] w-[360px] mt-[100px] lg:h-[203px] lg:mt-[50px] bg-[#495582] shadow-md lg:ml-5 ">
       <CardHeader>
         <div className="flex items-center">
           <CardTitle className="text-[#C29E3C]">
@@ -54,7 +54,7 @@ const PortfolioValue = ({
       </CardHeader>
       <CardContent>
         <div className="mr-3 mb-5 text-left">
-          <h2 className="text-5xl font-bold text-white mt-5">
+          <h2 className="text-4xl font-bold text-white mt-5">
             {portfolioValue} €
           </h2>
           <h2 className=" font-bold text-white text-left">
