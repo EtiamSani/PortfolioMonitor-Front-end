@@ -18,7 +18,7 @@ const Sidebar = () => {
   const handleLogout = () => {
     localStorage.clear();
     Cookies.remove("ownerId");
-    router.push("/signup-portfolio-owner");
+    router.push("/signin-portfolio-owner");
   };
 
   const handleDashboard = () => {
