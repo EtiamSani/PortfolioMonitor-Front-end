@@ -25,8 +25,12 @@ const Sidebar = () => {
     router.push("/dashboard");
   };
 
-  const handlePortfolio = () => {
+  const handlePortfolio: any = () => {
     router.push("/my-portfolios");
+  };
+
+  const handleAnalysis: any = () => {
+    router.push("/analysis");
   };
 
   return (
@@ -94,7 +98,7 @@ const Sidebar = () => {
               <Button
                 variant="noStyle"
                 className="flex items-center  text-white hover:text-[#272838] rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group w-full"
-                onClick={handleHome}
+                onClick={handleAnalysis}
               >
                 <div className="w-full ">
                   <div className="flex items-center">

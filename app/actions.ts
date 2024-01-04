@@ -93,7 +93,7 @@ export async function addCompany(portfolioId: any, formData: any) {
 }
 
 export async function addNewShareToCompany(companyId: any, formData: any) {
-  console.log(companyId, 'id dans action')
+
   
   // Vérification des champs numériques avant la conversion en entiers
   const isNumeric = (value: any) => !isNaN(value) && isFinite(value);
@@ -111,7 +111,7 @@ export async function addNewShareToCompany(companyId: any, formData: any) {
       : null,
   };
 
-  console.log(formattedData, 'foooooooooorùated')
+ 
 
   try {
     const response = await fetch(`http://localhost:3001/buy-company/${companyId}`, {
@@ -367,5 +367,58 @@ export async function updateDividendsReceived(companyId: any, formData: any) {
     }
   } catch (error) {
     console.error(error);
+  }
+}
+
+export async function postAnalysis(formData: any) {
+  const cookieStore = cookies();
+  const cookieInformation = cookieStore.get("ownerId");
+  if(cookieInformation) {
+    const ownerId = cookieInformation.value;
+
+  try {
+    const response = await fetch(
+      `http://localhost:3001/owner-analysis/upload/${ownerId}`,
+      {
+        method: "POST",
+        headers: {
+          
+        },
+        body: formData,
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error("Network response was not ok.");
+    }
+    revalidatePath("/analysis");
+    const data = await response.json();
+   
+    
+  
+  } catch (error) {
+    console.error("Error adding pdf:", error);
+  }
+}
+}
+
+export async function fetchAllAnalysis() {
+
+  try {
+    const response = await fetch(`http://localhost:3001/owner-analysis/all-pdfs`, {
+      method: "GET",
+      cache: 'no-store',
+      headers: {
+        "Content-Type": "application/json",
+      }});
+    if (!response.ok) {
+      throw new Error("Network response was not ok.");
+    }
+    const data = await response.json()
+    // revalidatePath("/dashboard");
+    return data
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw error;
   }
 }
