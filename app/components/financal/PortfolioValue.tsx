@@ -43,7 +43,7 @@ const PortfolioValue = ({
   ).toFixed(3);
 
   return (
-    <Card className="lg:w-[260px] w-[360px] mt-[100px] lg:h-[203px] lg:mt-[50px] bg-[#495582] shadow-md lg:ml-5 ">
+    <Card className="lg:w-[260px] w-[340px] lg:h-[203px] lg:mt-[50px]  bg-[#495582] shadow-md lg:ml-5 ">
       <CardHeader>
         <div className="flex items-center">
           <CardTitle className="text-[#C29E3C]">

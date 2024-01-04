@@ -12,7 +12,7 @@ const Greeting = () => {
     }
   }
   return (
-    <div>
+    <div className="hidden md:block">
       <h1 className="ml-[420px] text-2xl p-2 text-[#272838] mt-5 ">
         <span className=" text-[#272838]">
           Bonjour <span className="text-[#272838] font-bold">{ownerName}</span>{" "}
