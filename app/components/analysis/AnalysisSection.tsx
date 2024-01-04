@@ -1,10 +1,17 @@
 "use client";
 import { fetchAllAnalysis, postAnalysis } from "@/app/actions";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { ChangeEvent, useEffect, useState } from "react";
+import { HiOutlineDocumentDownload } from "react-icons/hi";
 
 const AnalysisSection = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -48,8 +55,24 @@ const AnalysisSection = () => {
 
   const renderAnalysisCards = () => {
     return analyses.map((analysis) => (
-      <Card key={analysis.id} className="border border-gray-400 h-20 w-20">
-        <p>{analysis.fileName}</p>
+      <Card
+        key={analysis.id}
+        className="border border-gray-400 h-[350px] w-[350px]"
+      >
+        <CardHeader>
+          <CardTitle>{analysis.fileName}</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p>Catégorie :{analysis.stockCategory}</p>
+          <p>Support : {analysis.peaOrCto}</p>
+          <p>Fair value : {analysis.fairValue}</p>
+          <p>Prix d'entrée : {analysis.entryPoint}</p>
+        </CardContent>
+        <CardFooter className="w-[340px]">
+          <Button className="w-full">
+            <HiOutlineDocumentDownload className="text-2xl" />
+          </Button>
+        </CardFooter>
       </Card>
     ));
   };
