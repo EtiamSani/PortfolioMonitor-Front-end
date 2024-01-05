@@ -1,5 +1,9 @@
 "use client";
-import { fetchAllAnalysis, postAnalysis } from "@/app/actions";
+import {
+  fetchAllAnalysis,
+  getTotalAnalysisCount,
+  postAnalysis,
+} from "@/app/actions";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -14,16 +18,18 @@ import { Label } from "@/components/ui/label";
 import { ChangeEvent, useEffect, useState } from "react";
 import { HiOutlineDocumentDownload } from "react-icons/hi";
 import ModalUpdateAnalysisResumeData from "./ModalUpdateAnalysisResumeData";
+import AnalysisPagination from "./AnalysisPagination";
 
 const AnalysisSection = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [analyses, setAnalyses] = useState<any[]>([]);
-  //   const [analysisData, setAnalysisData] = useState<any>({
-  //     fairValue: "",
-  //     peaOrCto: "",
-  //     stockCategory: "",
-  //     entryPoint: "",
-  //   });
+
+  const [totalPages, setTotalPages] = useState<number>(1);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [analysisPerPage, setAnalysisPerPage] = useState(3);
+
+  const [isClient, setIsClient] = useState(false);
 
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files;
@@ -32,17 +38,6 @@ const AnalysisSection = () => {
     }
   };
 
-  //   const handleInputChange = (
-  //     event: ChangeEvent<HTMLInputElement>,
-  //     field: keyof AnalysisData
-  //   ) => {
-  //     const { value } = event.target;
-  //     setAnalysisData((prevData) => ({
-  //       ...prevData,
-  //       [field]: value,
-  //     }));
-  //   };
-
   const handleSubmit = async () => {
     if (selectedFile) {
       const formData = new FormData();
@@ -50,9 +45,19 @@ const AnalysisSection = () => {
       await postAnalysis(formData);
     }
   };
-  const loadAnalyses = async () => {
-    const analysisData = await fetchAllAnalysis();
+  const loadAnalyses = async (page: number) => {
+    const analysisData = await fetchAllAnalysis(page, analysisPerPage);
     setAnalyses(analysisData);
+
+    const totalAnalysis = await getTotalAnalysisCount();
+    const totalAnalysisCount = totalAnalysis.length;
+    const totalPages = Math.ceil(totalAnalysisCount / analysisPerPage);
+    setTotalPages(totalPages);
+  };
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    loadAnalyses(page);
   };
 
   const handleDownload = async (analysisId: any) => {
@@ -98,10 +103,25 @@ const AnalysisSection = () => {
           <CardTitle>{analysis.fileName}</CardTitle>
         </CardHeader>
         <CardContent>
-          <p>Catégorie :{analysis.stockCategory}</p>
-          <p>Support : {analysis.peaOrCto}</p>
-          <p>Fair value : {analysis.fairValue}</p>
-          <p>Prix d'entrée : {analysis.entryPoint}</p>
+          <div className="flex">
+            <p className="font-bold mr-1">Catégorie : </p>
+            <span>{analysis.stockCategory}</span>
+          </div>
+
+          <div className="flex">
+            <p className="font-bold mr-1">Support : </p>
+            <span>{analysis.peaOrCto}</span>
+          </div>
+
+          <div className="flex">
+            <p className="font-bold mr-1">Fair value : </p>
+            <span>{analysis.fairValue}</span>
+          </div>
+
+          <div className="flex">
+            <p className="font-bold mr-1">Prix d'entrée : </p>
+            <span>{analysis.entryPoint}</span>
+          </div>
         </CardContent>
         <CardFooter className="w-[340px]">
           <div className="w-full">
@@ -126,54 +146,34 @@ const AnalysisSection = () => {
   };
 
   useEffect(() => {
-    loadAnalyses();
-  }, []);
+    loadAnalyses(currentPage);
+    setIsClient(true);
+  }, [currentPage]);
 
   return (
-    <div className="mt-20 flex flex-col items-center">
+    <div className="mt-20 flex flex-col items-center ml-[280px]">
       <h2 className="text-5xl font-bold mb-5">Déposer une analyse</h2>
       <div className="grid w-full max-w-sm items-center gap-1.5">
         <Label htmlFor="picture">Document PDF</Label>
         <Input id="picture" type="file" onChange={handleFileChange} />
 
-        {/* <Label htmlFor="email">La fair value</Label>
-        <Input
-          type="text"
-          id="fairValue"
-          placeholder="300"
-          value={analysisData.fairValue}
-          onChange={(e) => handleInputChange(e, "fairValue")}
-        />
-        <Label htmlFor="email">Support</Label>
-        <Input
-          type="text"
-          id="peaOrCto"
-          placeholder="PEA"
-          value={analysisData.peaOrCto}
-          onChange={(e) => handleInputChange(e, "peaOrCto")}
-        />
-        <Label htmlFor="email">Catégorie</Label>
-        <Input
-          type="text"
-          id="stockCategory"
-          placeholder="Fast grower"
-          value={analysisData.stockCategory}
-          onChange={(e) => handleInputChange(e, "stockCategory")}
-        />
-        <Label htmlFor="email">Prix d'entrée</Label>
-        <Input
-          type="text"
-          id="entryPoint"
-          placeholder="283"
-          value={analysisData.entryPoint}
-          onChange={(e) => handleInputChange(e, "entryPoint")}
-        /> */}
-        <Button onClick={handleSubmit} className="bg-[#495582]">
+        <Button onClick={handleSubmit} className="bg-[#495582] mt-5">
           Envoyer
         </Button>
       </div>
-
-      <div className="grid grid-cols-3 gap-4 mt-5">{renderAnalysisCards()}</div>
+      <h2 className="text-5xl font-bold my-5">Analyses EIP</h2>
+      <div className="grid grid-cols-3 gap-4 my-5 ">
+        {renderAnalysisCards()}
+      </div>
+      {isClient ? (
+        <AnalysisPagination
+          totalPages={totalPages}
+          currentPage={currentPage}
+          setCurrentPage={handlePageChange}
+        />
+      ) : (
+        <span>Loading</span>
+      )}
     </div>
   );
 };

@@ -402,10 +402,10 @@ export async function postAnalysis(formData: any) {
 }
 }
 
-export async function fetchAllAnalysis() {
+export async function getTotalAnalysisCount() {
 
   try {
-    const response = await fetch(`http://localhost:3001/owner-analysis/all-pdfs`, {
+    const response = await fetch(`http://localhost:3001/owner-analysis/all-pdfs-total`, {
       method: "GET",
       cache: 'no-store',
       headers: {
@@ -415,11 +415,69 @@ export async function fetchAllAnalysis() {
       throw new Error("Network response was not ok.");
     }
     const data = await response.json()
-    // revalidatePath("/dashboard");
-    return data
+   
+    
+    return data;
   } catch (error) {
     console.error("Error fetching data:", error);
     throw error;
   }
 }
 
+export async function fetchAllAnalysis(page = 1, pageSize = 6) {
+  try {
+    const parsedPageSize = parseInt(pageSize.toString(), 10);
+    const response = await fetch(`http://localhost:3001/owner-analysis/all-pdfs?page=${page}&pageSize=${parsedPageSize}`, {
+      method: "GET",
+      cache: 'no-store',
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    
+    if (!response.ok) {
+      throw new Error("Network response was not ok.");
+    }
+    
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw error;
+  }
+}
+
+export async function updateAnalysisData(analysisId: any, formData: any) {
+  const isNumeric = (value: any) => !isNaN(value) && isFinite(value);
+
+  const formattedData = {
+    ...formData,
+    fairValue: isNumeric(formData.fairValue)
+      ? parseFloat(formData.fairValue.replace(',', '.'))
+      : null,
+      entryPoint: isNumeric(formData.entryPoint)
+      ? parseFloat(formData.entryPoint.replace(',', '.'))
+      : null,
+  };
+
+  try {
+    const response = await fetch(
+      `http://localhost:3001/owner-analysis/analysis-data/${analysisId}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formattedData),
+      }
+    );
+
+    revalidatePath("/analysis");
+    if (response.ok) {
+    } else {
+      throw new Error("Erreur lors de la suppression de l'entreprise");
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
