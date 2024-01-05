@@ -422,3 +422,4 @@ export async function fetchAllAnalysis() {
     throw error;
   }
 }
+
