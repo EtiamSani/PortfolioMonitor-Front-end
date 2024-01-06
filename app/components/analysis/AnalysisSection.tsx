@@ -48,12 +48,20 @@ const AnalysisSection = () => {
   const loadAnalyses = async (page: number) => {
     const analysisData = await fetchAllAnalysis(page, analysisPerPage);
     setAnalyses(analysisData);
-
-    const totalAnalysis = await getTotalAnalysisCount();
-    const totalAnalysisCount = totalAnalysis.length;
-    const totalPages = Math.ceil(totalAnalysisCount / analysisPerPage);
-    setTotalPages(totalPages);
   };
+
+  useEffect(() => {
+    const fetchTotalPages = async () => {
+      const totalAnalysis = await getTotalAnalysisCount();
+      const totalAnalysisCount = totalAnalysis.length;
+      const totalPages = Math.ceil(totalAnalysisCount / analysisPerPage);
+      console.log(totalPages);
+      setTotalPages(totalPages);
+      setIsClient(true);
+    };
+
+    fetchTotalPages();
+  }, []);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -147,7 +155,6 @@ const AnalysisSection = () => {
 
   useEffect(() => {
     loadAnalyses(currentPage);
-    setIsClient(true);
   }, [currentPage]);
 
   return (
