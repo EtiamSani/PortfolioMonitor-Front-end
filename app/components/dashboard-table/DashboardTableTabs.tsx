@@ -4,7 +4,7 @@ import { FaPenToSquare } from "react-icons/fa6";
 
 
 import DashboardTable from "./DashboardTable";
-import Buttons from "./AddCompanyButton";
+import AddCompanyButtons from "./AddCompanyButton";
 import DashboardFinancialPart from "../financal/DashboardFinancialPart";
 
 import { fetchPortfolioNames } from "@/app/actions";
@@ -39,15 +39,17 @@ const DashboardTableTabs = async () => {
             />
           </div>
           <Card className="border border-gray-200 mb-5">
-            <Buttons portfolioId={name.id} />
-            <CardHeader>
-              <CardTitle>
-                <div className="flex text-[#272838] text-xl items-center">
-                  <FaPenToSquare className="mr-2 text-[#272838]" />
-                  {name.name}
-                </div>
-              </CardTitle>
-            </CardHeader>
+            <div className="grid grid-cols-2">
+              <CardHeader>
+                <CardTitle>
+                  <div className="flex text-[#272838] text-xl items-center">
+                    <FaPenToSquare className="mr-2 text-[#272838]" />
+                    {name.name}
+                  </div>
+                </CardTitle>
+              </CardHeader>
+              <AddCompanyButtons portfolioId={name.id} />
+            </div>
             <CardContent className="space-y-2">
               <DashboardTable
                 name={name.name}

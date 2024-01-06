@@ -13,7 +13,7 @@ import {
 import { GiPayMoney } from "react-icons/gi";
 import { GiReceiveMoney } from "react-icons/gi";
 import { BsBuildingFillGear } from "react-icons/bs";
-import { BsBuildingFillX } from "react-icons/bs";
+import { RiDeleteBin6Fill } from "react-icons/ri";
 import { deleteCompany } from "@/app/actions";
 import UpdateCompanyButton from "./UpdateCompanyButton";
 import BuyNewSharesButton from "./BuyNewSharesButton";
@@ -85,8 +85,7 @@ const DashboardTable = ({ company }: any) => {
                     <UpdateCompanyButton companyId={companyId} />
                     <AddDividendsButton companyId={companyId} />
                     <Button onClick={() => deleteCompany(companyId)}>
-                      <BsBuildingFillX className="text-xl mr-3" />
-                      <div>Supprimer</div>
+                      <RiDeleteBin6Fill className="text-xl " />
                     </Button>
                   </div>
                 </TableCell>

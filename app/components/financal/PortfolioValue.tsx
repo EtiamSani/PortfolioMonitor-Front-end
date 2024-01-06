@@ -55,7 +55,7 @@ const PortfolioValue = ({
       <CardContent>
         <div className="mr-3 mb-5 text-left">
           <h2 className="text-4xl font-bold text-white mt-5">
-            {portfolioValue} €
+            {parseFloat(portfolioValue).toFixed(2)} €
           </h2>
           <h2 className=" font-bold text-white text-left">
             <div className="flex">
@@ -67,7 +67,7 @@ const PortfolioValue = ({
                       : "text-green-500"
                   }
                 >
-                  {portfolioTotalGainOrLost} €
+                  {parseFloat(portfolioTotalGainOrLost).toFixed(2)} €
                 </span>
               </div>
               <div>
@@ -78,7 +78,7 @@ const PortfolioValue = ({
                       : "text-green-500"
                   }
                 >
-                  ({PourcentPortfolioValue} %)
+                  ({parseFloat(PourcentPortfolioValue).toFixed(2)} %)
                 </span>
               </div>
             </div>

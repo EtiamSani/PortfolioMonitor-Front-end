@@ -9,7 +9,6 @@ const page = () => {
     <div className="bg-[#F8F9FA] min-h-screen">
       <Sidebar />
       <div className="flex flex-col">
-        {/* <DashboardFinancialPart /> */}
         <DashboardTableTabs />
       </div>
     </div>

@@ -9,10 +9,14 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { jwtDecode } from "jwt-decode";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
+import { ExclamationTriangleIcon } from "@radix-ui/react-icons";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 const OwnerSignInForm = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [loginErrorMessage, setLoginErrorMessage] = useState<string>("");
+  const [showAlert, setShowAlert] = useState<boolean>(false);
   const router = useRouter();
   async function onSubmit(event: React.SyntheticEvent) {
     event.preventDefault();
@@ -30,7 +34,6 @@ const OwnerSignInForm = () => {
   };
 
   const handleSignIn = async (data: any) => {
-    console.log(data);
     try {
       const response = await fetch(
         "http://localhost:3001/auth-portfolio-owner/signin",
@@ -44,6 +47,11 @@ const OwnerSignInForm = () => {
       );
 
       if (!response.ok) {
+        setLoginErrorMessage("Couple mot de passe/Email sont incorrect");
+        setShowAlert(true);
+        setTimeout(() => {
+          setShowAlert(false);
+        }, 4000);
         throw new Error("Sign-up request failed");
       }
 
@@ -99,7 +107,7 @@ const OwnerSignInForm = () => {
         </div>
       </div>
 
-      <div className="grid gap-6 lg:w-[500px] m-auto">
+      <div className="grid gap-6 lg:w-[500px] w-[350px] m-auto">
         <form onSubmit={onSubmit}>
           <div className="grid gap-5">
             <h2 className="font-bold text-3xl m-auto">Me connecter</h2>
@@ -152,6 +160,17 @@ const OwnerSignInForm = () => {
             </Button>
           </div>
         </form>
+        <div>
+          {showAlert && (
+            <div>
+              <Alert variant="destructive">
+                <ExclamationTriangleIcon className="h-4 w-4" />
+                <AlertTitle>Erreur</AlertTitle>
+                <AlertDescription>{loginErrorMessage}</AlertDescription>
+              </Alert>
+            </div>
+          )}
+        </div>
         <Link
           href="/mot-de-passe-oublie"
           className="text-blue-500 underline m-auto text-sm"

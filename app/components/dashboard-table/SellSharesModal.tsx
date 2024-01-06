@@ -30,11 +30,7 @@ const SellSharesModal = ({ companyId }: any) => {
     const { id, value } = e.target;
     let updatedValue = value;
 
-    // Convertir les virgules en points ou vice versa
     updatedValue = updatedValue.replace(",", ".");
-
-    // Gérer la saisie de l'utilisateur ici
-    // Assurez-vous de valider la saisie selon vos besoins
 
     setFormData((prevData) => ({
       ...prevData,
@@ -46,9 +42,6 @@ const SellSharesModal = ({ companyId }: any) => {
     <div>
       <DialogHeader>
         <DialogTitle>Ajouter une nouvelle vente</DialogTitle>
-        <DialogDescription>
-          Make changes to your profile here. Click save when you're done.
-        </DialogDescription>
       </DialogHeader>
       <div className="grid gap-4 py-4">
         <div className="grid grid-cols-4 items-center gap-4">

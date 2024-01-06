@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { updatePortfolioData } from "@/app/actions";
 import { useState } from "react";
+import { GiMoneyStack, GiTwoCoins } from "react-icons/gi";
 
 const DashboardFinancialPart = ({ portfolioId, financeData }: any) => {
   const [formData, setFormData] = useState({
@@ -27,35 +28,45 @@ const DashboardFinancialPart = ({ portfolioId, financeData }: any) => {
       <Card className="w-[260px]  mt-[50px] bg-[#495582] h-[203px]">
         {" "}
         <CardHeader>
-          <CardTitle className="text-[#FAFAFA]">Liquidités</CardTitle>
+          <div className="flex items-center">
+            <CardTitle className="text-[#C29E3C]">Liquidités</CardTitle>
+            <GiTwoCoins className="text-[#C29E3C] text-2xl ml-2 " />
+          </div>
         </CardHeader>
         <CardContent>
-          <h2 className="text-4xl font-bold text-[#FAFAFA]">
-            {financeData.liquidity} €
+          <h2 className="text-4xl font-bold text-[#FAFAFA] mt-5">
+            {parseFloat(financeData.liquidity).toFixed(2)} €
           </h2>
         </CardContent>
       </Card>
 
       <Card className="w-[260px]  mt-[50px] bg-[#495582] h-[203px]">
         <CardHeader>
-          <CardTitle className="text-white">Total apports</CardTitle>
+          <div className="flex items-center">
+            <CardTitle className="text-[#C29E3C]">Total apports</CardTitle>
+            <GiMoneyStack className="text-[#C29E3C] text-2xl ml-2 " />
+          </div>
         </CardHeader>
         <CardContent>
-          <h2 className="text-4xl font-bold text-white">
+          <h2 className="text-4xl font-bold text-white mt-5">
             {financeData.moneyInput} €
           </h2>
         </CardContent>
-        <div className="flex w-[200px] max-w-sm items-center space-x-2 mb-2 m-auto">
+        <div className="flex w-[200px] max-w-sm items-center space-x-2 mb-2 m-auto -mt-5">
           <Input
             id="moneyInput"
             type="text"
-            placeholder="Nouvel apport"
+            placeholder="Apport/mois"
             className="bg-white"
             value={formData.moneyInput}
             onChange={handleChange}
           />
-          <Button onClick={() => updatePortfolioData(portfolioId, formData)}>
-            Ajouter
+          <Button
+            variant="outline"
+            className=""
+            onClick={() => updatePortfolioData(portfolioId, formData)}
+          >
+            <div className="text-[#C29E3C] ">Ajouter</div>
           </Button>
         </div>
       </Card>

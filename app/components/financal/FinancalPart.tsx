@@ -14,7 +14,7 @@ const FinancalPart = ({ financeData }: any) => {
         </CardHeader>
         <CardContent>
           <h2 className="text-4xl font-bold text-white mt-5">
-            {financeData.liquidity} €
+            {parseFloat(financeData.liquidity).toFixed(2)} €
           </h2>
         </CardContent>
       </Card>

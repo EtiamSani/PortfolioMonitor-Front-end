@@ -7,12 +7,12 @@ import { Button } from "@/components/ui/button";
 
 const AddCompanyButton = ({ portfolioId, handleSubmit }: any) => {
   return (
-    <div className="ml-7 ">
+    <div className="ml-[400px] ">
       <div className="flex ">
         <Dialog>
           <DialogTrigger asChild>
-            <Button className="mt-4">
-              <BsBuildingAdd className="text-3xl cursor-pointer" />
+            <Button variant="outline" className="mt-4">
+              <BsBuildingAdd className="text-2xl cursor-pointer" />
               <div className="ml-3">Ajouter une entreprise</div>
             </Button>
           </DialogTrigger>

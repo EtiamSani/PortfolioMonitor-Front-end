@@ -1,7 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import {
-  DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
@@ -31,14 +30,11 @@ const AddDividendsModal = ({ companyId }: any) => {
     <div>
       <DialogHeader>
         <DialogTitle>Ajouter dividendes</DialogTitle>
-        <DialogDescription>
-          Make changes to your profile here. Click save when you're done.
-        </DialogDescription>
       </DialogHeader>
       <div className="grid gap-4 py-4">
         <div className="grid grid-cols-4 items-center gap-4">
           <Label htmlFor="dividendsReceived" className="text-right">
-            Dividendes reçu
+            Dividendes total reçu
           </Label>
           <Input
             id="dividendsReceived"
