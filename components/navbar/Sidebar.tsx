@@ -8,9 +8,17 @@ import { Separator } from "@/components/ui/separator";
 import { Button } from "../ui/button";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const Sidebar = () => {
   const router = useRouter();
+  const [activeButton, setActiveButton] = useState("");
+
+  const handleButtonClick = (buttonName: any, handler: any) => {
+    setActiveButton(buttonName);
+    localStorage.setItem("activeButton", buttonName); // Enregistrer dans localStorage
+    handler();
+  };
   const handleHome = () => {
     console.log("home");
   };
@@ -33,6 +41,13 @@ const Sidebar = () => {
     router.push("/analysis");
   };
 
+  useEffect(() => {
+    const storedActiveButton = localStorage.getItem("activeButton");
+    if (storedActiveButton) {
+      setActiveButton(storedActiveButton);
+    }
+  }, []);
+
   return (
     <aside
       id="default-sidebar"
@@ -46,15 +61,25 @@ const Sidebar = () => {
         </div>
         <ul className="space-y-2 font-medium">
           <li>
-            <div className="w-full mb-8">
+            <div className="w-full mb-3">
               <Button
                 variant="noStyle"
-                className="flex items-center text-white hover:text-[#272838] rounded-lg dark:text-white hover:bg-white dark:hover:bg-gray-700 group w-full"
-                onClick={handlePortfolio}
+                className={`flex items-center text-white hover:text-[#272838] rounded-lg dark:text-white hover:bg-white dark:hover:bg-gray-700 group w-full ${
+                  activeButton === "portfolio"
+                    ? "bg-gray-100 text-[#272838]"
+                    : ""
+                }`}
+                onClick={() => handleButtonClick("portfolio", handlePortfolio)}
               >
                 <div className="w-full">
                   <div className="flex items-center">
-                    <GoHomeFill className="text-2xl text-white transition duration-75 dark:text-gray-400 group-hover:text-[#272838] dark:group-hover:text-white" />
+                    <GoHomeFill
+                      className={`text-2xl ${
+                        activeButton === "portfolio"
+                          ? "text-[#272838] transition duration-75"
+                          : "text-white dark:text-gray-400 group-hover:text-[#272838] dark:group-hover:text-white transition duration-75"
+                      }`}
+                    />
                     <span className="ml-5 text-xl">Portefeuilles</span>
                   </div>
                 </div>
@@ -62,15 +87,25 @@ const Sidebar = () => {
             </div>
           </li>
           <li>
-            <div className="w-full  mb-8">
+            <div className="w-full mb-3">
               <Button
                 variant="noStyle"
-                className="flex items-center  text-white hover:text-[#272838] rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group w-full"
-                onClick={handleDashboard}
+                className={`flex items-center text-white hover:text-[#272838] rounded-lg dark:text-white hover:bg-white dark:hover:bg-gray-700 group w-full ${
+                  activeButton === "dashboard"
+                    ? "bg-gray-100 text-[#272838]"
+                    : ""
+                }`}
+                onClick={() => handleButtonClick("dashboard", handleDashboard)}
               >
                 <div className="w-full">
                   <div className="flex items-center">
-                    <MdOutlineDashboard className="text-2xl text-white transition duration-75 dark:text-gray-400 group-hover:text-[#272838] dark:group-hover:text-white" />
+                    <MdOutlineDashboard
+                      className={`text-2xl ${
+                        activeButton === "dashboard"
+                          ? "text-[#272838] transition duration-75"
+                          : "text-white dark:text-gray-400 group-hover:text-[#272838] dark:group-hover:text-white transition duration-75"
+                      }`}
+                    />
                     <span className="ml-5 text-xl">Dashboard</span>
                   </div>
                 </div>
@@ -78,7 +113,7 @@ const Sidebar = () => {
             </div>
           </li>
           <li>
-            <div className="w-full mb-8">
+            <div className="w-full mb-3">
               <Button
                 variant="noStyle"
                 className="flex items-center text-white hover:text-[#272838] rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group w-full"
@@ -86,7 +121,13 @@ const Sidebar = () => {
               >
                 <div className="w-full">
                   <div className="flex items-center">
-                    <HiMiniUsers className="text-2xl text-white transition duration-75 dark:text-gray-400 group-hover:text-[#272838] dark:group-hover:text-white" />
+                    <HiMiniUsers
+                      className={`text-2xl ${
+                        activeButton === "abonnes"
+                          ? "text-[#272838] transition duration-75"
+                          : "text-white dark:text-gray-400 group-hover:text-[#272838] dark:group-hover:text-white transition duration-75"
+                      }`}
+                    />
                     <span className="ml-5 text-xl">Abonnées</span>
                   </div>
                 </div>
@@ -94,15 +135,25 @@ const Sidebar = () => {
             </div>
           </li>
           <li>
-            <div className="w-full mb-8">
+            <div className="w-full mb-3">
               <Button
                 variant="noStyle"
-                className="flex items-center  text-white hover:text-[#272838] rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group w-full"
-                onClick={handleAnalysis}
+                className={`flex items-center text-white hover:text-[#272838] rounded-lg dark:text-white hover:bg-white dark:hover:bg-gray-700 group w-full ${
+                  activeButton === "analysis"
+                    ? "bg-gray-100 text-[#272838]"
+                    : ""
+                }`}
+                onClick={() => handleButtonClick("analysis", handleAnalysis)}
               >
                 <div className="w-full ">
                   <div className="flex items-center">
-                    <FaRegFile className="text-2xl text-white transition duration-75 dark:text-gray-400 group-hover:text-[#272838] dark:group-hover:text-white" />
+                    <FaRegFile
+                      className={`text-2xl ${
+                        activeButton === "analysis"
+                          ? "text-[#272838] transition duration-75"
+                          : "text-white dark:text-gray-400 group-hover:text-[#272838] dark:group-hover:text-white transition duration-75"
+                      }`}
+                    />
                     <span className="ml-5 text-xl">Analyses</span>
                   </div>
                 </div>
@@ -110,7 +161,7 @@ const Sidebar = () => {
             </div>
           </li>
           <li>
-            <div className="w-full mb-8">
+            <div className="w-full mb-3">
               <Button
                 variant="noStyle"
                 className="flex items-center  text-white hover:text-[#003F91] rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group w-full"
