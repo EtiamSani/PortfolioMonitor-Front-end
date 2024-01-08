@@ -19,6 +19,7 @@ import { ChangeEvent, useEffect, useState } from "react";
 import { HiOutlineDocumentDownload } from "react-icons/hi";
 import ModalUpdateAnalysisResumeData from "./ModalUpdateAnalysisResumeData";
 import AnalysisPagination from "./AnalysisPagination";
+import Loading from "@/app/analysis/loading";
 
 const AnalysisSection = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -179,7 +180,7 @@ const AnalysisSection = () => {
           setCurrentPage={handlePageChange}
         />
       ) : (
-        <span>Loading</span>
+        <Loading />
       )}
     </div>
   );

@@ -1,8 +1,9 @@
 import Sidebar from "@/components/navbar/Sidebar";
-import React from "react";
+import React, { Suspense } from "react";
 import TableTabs from "../components/portfolio-table/TableTabs";
 import FinancalPart from "@/app/components/financal/FinancalPart";
 import dynamic from "next/dynamic";
+import Loading from "./loading";
 
 const Greeting = dynamic(() => import("@/components/portfolio/Greeting"), {
   loading: () => <p>Chargement...</p>,
@@ -17,8 +18,9 @@ const page = () => {
         <Greeting />
 
         <div className="flex">
-          <Sidebar />
-          <TableTabs />
+          <Suspense fallback={<Loading />}>
+            <TableTabs />
+          </Suspense>
         </div>
       </div>
     </div>

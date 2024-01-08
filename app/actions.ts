@@ -161,8 +161,12 @@ export async function fetchPortfolioById(portfolioId: any) {
 
 export async function fetchPortfolioNames() {
   const cookieStore = cookies();
-  const cookieInformation = cookieStore.get("ownerId");
-  const ownerId = cookieInformation.value;
+  if(cookieStore){
+    
+    const cookieInformation = cookieStore.get("ownerId");
+    if(cookieInformation){
+
+      const ownerId = cookieInformation.value;
 
   try {
     const response = await fetch(`http://localhost:3001/portfolio/${ownerId}`);
@@ -175,6 +179,8 @@ export async function fetchPortfolioNames() {
     console.error("Error fetching data:", error);
     throw error;
   }
+  }
+}
 }
 
 
